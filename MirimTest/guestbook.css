@@ -10,7 +10,7 @@ body {
 
 #titlebar{
     background-color: #179063;
-    height: 130px;
+    height: 100px;
     width: 100vw;
 }
 
@@ -22,5 +22,57 @@ body {
 #close{
     float: right;
     margin-right: 40px;
-    margin-top: 4px;
+}
+
+#messagebox{
+    position: relative;
+    background-image: url('../image/guestbook_messagebox.png');
+
+    height: 138px;
+    width: 1435px;
+
+    margin-left: 50px;
+    margin-top: 460px;
+}
+
+#boxcolor{
+    position: absolute;
+    background-image: url('../image/guestbook_color.png');
+
+    left: 30px;
+    top: 15px;
+
+    height: 104px;
+    width: 47px;
+}
+
+#sendbtn{
+    position: absolute;
+    background-image: url('../image/guestbook_send.png');
+
+    height: 45px;
+    width: 44px;
+
+    right: 25px;
+    bottom: 15px;
+}
+#nick{
+    margin-left: 110px;
+    margin-top: 20px;
+
+    height: 30px;
+    width: 400px;
+
+    border: none;
+}
+
+#guestbook{
+    margin-left: 110px;
+    margin-top: 3px;
+
+    height: 60px;
+    width: 1200px;
+
+    border: none;
+    font-size: 15px;
 }
