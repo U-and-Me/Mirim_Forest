@@ -1,0 +1,47 @@
+body {
+    margin: 0%;
+
+    height: 100vh;
+    background-image: url('image/index_bg.png');
+    background-repeat : no-repeat;
+    background-size : cover;
+
+}
+
+#bar{
+    background-image: url('image/index_bar.png');
+
+    height: 139px;
+    width: 100vw;
+}
+
+#logo{
+    margin-top: 13px;
+    margin-left: 7px;
+}
+
+#manager{
+    float: right;
+
+    margin-top: 8px;
+    margin-right: 20px;
+}
+
+#mgbtn{
+    float: right;
+
+    margin-top: -33px;
+    margin-right: 25px;
+}
+
+#testbtn{
+    margin-top: 50px;
+    margin-left: 180px;
+}
+
+#forestbtn{
+    float: right;
+
+    margin-top: 50px;
+    margin-right: 180px;
+}
