@@ -28,11 +28,11 @@ body {
     position: relative;
     background-image: url('../image/guestbook_messagebox.png');
 
-    height: 138px;
-    width: 1435px;
+    height: 182px;
+    width: 1517px;
 
-    margin-left: 50px;
-    margin-top: 460px;
+    margin-left: 200px;
+    margin-top: 620px;
 }
 
 #boxcolor{
@@ -40,10 +40,10 @@ body {
     background-image: url('../image/guestbook_color.png');
 
     left: 30px;
-    top: 15px;
+    top: 30px;
 
-    height: 104px;
-    width: 47px;
+    height: 119px;
+    width: 54px;
 }
 
 #sendbtn{
@@ -60,7 +60,7 @@ body {
     margin-left: 110px;
     margin-top: 20px;
 
-    height: 30px;
+    height:40px;
     width: 400px;
 
     border: none;
@@ -70,7 +70,7 @@ body {
     margin-left: 110px;
     margin-top: 3px;
 
-    height: 60px;
+    height: 80px;
     width: 1200px;
 
     border: none;
