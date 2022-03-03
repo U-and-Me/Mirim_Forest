@@ -1,0 +1,50 @@
+body {
+    margin: 0%;
+}
+
+#currentbar{
+    margin-top: 70px;
+    margin-left: 450px;
+}
+
+#closebtn{
+    float: right;
+
+    margin-top: -150px;
+    margin-right: 50px;
+}
+
+#test_bg{
+    background-image: url('../image/MirimTest_bg.png');
+
+    width: 1651px;
+    height: 754px;
+
+    margin-left: 140px;
+    margin-top: 40px;
+}
+
+#ansO{
+    background-color: transparent;
+    background-image: url('../image/MirimTest_left.png');
+
+    width: 524px;
+    height: 320px;
+
+    border: none;
+
+    margin-top: 370px;
+    margin-left: 170px;
+}
+
+#ansX{
+    background-color: transparent;
+    background-image: url('../image/MirimTest_right.png');
+
+    width: 524px;
+    height: 320px;
+
+    border: none;
+
+    margin-left: 270px;
+}
