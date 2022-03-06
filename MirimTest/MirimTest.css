@@ -15,6 +15,7 @@ body {
 }
 
 #test_bg{
+    position: relative;
     background-image: url('../image/MirimTest_bg.png');
 
     width: 1651px;
@@ -24,7 +25,13 @@ body {
     margin-top: 40px;
 }
 
-#ansO{
+#question{
+    position: absolute;
+    margin-left: 150px;
+    margin-top: 100px;
+}
+
+#ans_left{
     background-color: transparent;
     background-image: url('../image/MirimTest_left.png');
 
@@ -37,7 +44,7 @@ body {
     margin-left: 170px;
 }
 
-#ansX{
+#ans_right{
     background-color: transparent;
     background-image: url('../image/MirimTest_right.png');
 
