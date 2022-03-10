@@ -28,7 +28,7 @@ let question = {
 let answer_o = {
     1 : '형',
     2 : '2층',
-    3 : '',
+    3 : '5개',
     4 : '두 명',
     5 : 'X',
     6 : 'X',
@@ -36,7 +36,7 @@ let answer_o = {
     8 : 'O',
     9 : 'O',
     10 : 'X',
-    11 : '',
+    11 : 'X',
     12 : '연두색',
     13 : 'O',
     14 : 'O',
@@ -52,7 +52,7 @@ let answer_o = {
 let answer_x = {
     1 : '영',
     2 : '3층',
-    3 : '',
+    3 : '4개',
     4 : '한 명',
     5 : 'O',
     6 : 'O',
@@ -60,7 +60,7 @@ let answer_x = {
     8 : 'X',
     9 : 'X',
     10 : 'O',
-    11 : '',
+    11 : 'O',
     12 : '하늘색',
     13 : 'X',
     14 : 'X',
@@ -76,7 +76,7 @@ let tot_ans = 20;
 let cur_qus = 1; // 현재 테스트 질문
 let cur_pos = 0; // 테스트 퍼센트 바 위치
 let qus_arr = []; // 랜덤 질문 배열
-let cur_ind; // 현재 질문 인덱스
+let cur_ind = 0; // 현재 질문 인덱스
 
 RandomQuestion();
 
@@ -96,32 +96,70 @@ function RandomQuestion(){
     }
 }
 
-StartGame();
+Test();
 
-// 게임 시작
-function StartGame(){
+// 테스트하기
+function Test(){
+    if(cur_ind < 20){
+       ShowQuestion();
+    }else{ // 테스트가 끝났을 경우 결과 화면으로 이동
+        var link = 'ResultTest.html';
+        location.href = link;
+        location.replace(link);
+        window.open(link);
+    }
+}
+
+function ShowQuestion(){
     var qus_span = document.querySelector("#question");
     var ans_left = document.querySelector("#ans_left");
     var ans_right = document.querySelector("#ans_right");
 
-    for(cur_ind = 0; cur_ind < 20; cur_ind++){
-        // 질문
-        qus_span.innerHTML = '<span style="width:auto; height:auto; font-size:70px; font-weight:bold;">Q'+(cur_ind+1)+'. '+question[qus_arr[cur_ind]]+'</span>';
+    // 질문
+    qus_span.innerHTML = '<span style="width:auto; height:auto; font-size:70px; font-weight:bold;">Q'+(cur_ind+1)+'. '+question[qus_arr[cur_ind]]+'</span>';
         
-        // 답
-        if(cur_ind % 2 == 0){
-            ans_left.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_o[qus_arr[cur_ind]]+'</span>';
-            ans_right.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_x[qus_arr[cur_ind]]+'</span>';
-        }else{
-            ans_left.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_x[qus_arr[cur_ind]]+'</span>';
-            ans_right.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_o[qus_arr[cur_ind]]+'</span>';
-        }
-        
+    // 답
+    if(cur_ind % 2 == 0){
+        ans_left.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_o[qus_arr[cur_ind]]+'</span>';
+        ans_right.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_x[qus_arr[cur_ind]]+'</span>';
+    }else{
+        ans_left.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_x[qus_arr[cur_ind]]+'</span>';
+        ans_right.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_o[qus_arr[cur_ind]]+'</span>';
     }
-
+        
 }
 
 // 정답 체크
 function chkAnswer(user_ans){
+    if(cur_ind % 2 == 0){
+        if(user_ans == 1){ // 정답
+
+        }else{ // 오답
+
+        }
+    }else{
+        if(user_ans == 2){ // 정답
+
+        }else{ // 오답
+
+        }
+    }
+
+    cur_ind++; // 다음 질문
+
+    Test();
+}
+
+// 중간에 테스트를 종료하려고 하는 경우
+function chkClose(){
+    let result = confirm("정말로 테스트를 종료하시겠습니까?");
     
+    if(result){
+        var link = '../index.html';
+        location.href = link;
+        location.replace(link);
+        window.open(link);
+    }else{
+        Test();
+    }
 }
