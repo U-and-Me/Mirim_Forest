@@ -1,0 +1,41 @@
+body {
+    margin: 0%;
+}
+
+#result_bg{
+    background-image: url("../image/ResultTest_bg.png");
+
+    width: 1399px;
+    height: 100vh;
+}
+
+#txt1{
+    float: right;
+
+    margin-top: -910px;
+    margin-right: 170px;
+    
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#post{
+    float: right;
+
+    margin-top: -840px;
+    margin-right: 7px;
+}
+
+#homebtn{
+    float: right;
+
+    margin-top: -380px;
+    margin-right: 145px;
+}
+
+#msgbtn{
+    float: right;
+
+    margin-top: -130px;
+    margin-right: 60px;
+}

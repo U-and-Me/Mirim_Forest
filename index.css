@@ -9,7 +9,7 @@ body {
 }
 
 #bar{
-    background-image: url('image/index_bar.png');
+    background-image: url('image/index_titlebar.png');
 
     height: 139px;
     width: 100vw;
@@ -30,18 +30,18 @@ body {
 #mgbtn{
     float: right;
 
-    margin-top: -33px;
+    margin-top: -45px;
     margin-right: 25px;
 }
 
 #testbtn{
-    margin-top: 50px;
-    margin-left: 180px;
+    margin-top: 130px;
+    margin-left: 230px;
 }
 
 #forestbtn{
     float: right;
 
-    margin-top: 50px;
-    margin-right: 180px;
+    margin-top: 130px;
+    margin-right: 230px;
 }
