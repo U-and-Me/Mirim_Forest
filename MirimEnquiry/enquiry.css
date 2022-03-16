@@ -1,0 +1,27 @@
+body {
+    margin: 0%;
+
+    height: 100vh;
+    background-image: url('../image/guestbook_bg.png');
+    background-repeat : no-repeat;
+    background-size : cover;
+
+}
+
+#titlebar{
+    background-color: #179063;
+    height: 100px;
+    width: 100vw;
+}
+
+#votingbtn{
+    height: 90px;
+    width: 180px;
+    margin-top: 12px;
+    margin-left: 15px;
+}
+
+#close{
+    float: right;
+    margin-right: 40px;
+}

@@ -1,0 +1,146 @@
+body {
+    margin: 0%;
+
+    height: 100vh;
+    background-image: url('../image/guestbook_bg.png');
+    background-repeat : no-repeat;
+    background-size : cover;
+
+}
+
+
+#backbtn{
+    margin-top: 22px;
+    margin-left: 10px;
+}
+
+#titlebar{
+    background-color: #179063;
+    height: 100px;
+    width: 100vw;
+}
+
+#tmibox{
+    background-color: white;
+    padding: 25px;
+    border: 7px solid #686247;
+    margin: 15px;
+    height: 700px;
+}
+
+#tmibox2{
+    background-color: #D3FFAC;
+    padding: 5px;
+    margin: 0px;  
+    height: 600px;
+}
+
+
+#create_title{
+    margin-left: 15px;
+    color: rgb(51, 49, 49);
+}
+#title_txtbox{
+    border: 1px solid #707070;
+    border-radius: 1px;
+    height: 40px;
+    width: 1790px;
+    margin-left: 10px;
+    font-size: 16pt; /*폰트 크기*/
+    text-align: left; /*텍스트 위치*/
+    color: black;
+    padding: 4px; /*안쪽 여백*/
+    box-sizing: border-box;
+}
+
+
+#create_text{
+    margin-top: 20px;
+    margin-left: 15px;
+    color: rgb(51, 49, 49);
+}
+#text_txtbox{
+    border: 1px solid #707070;
+    border-radius: 1px;
+    height: 200px;
+    width: 1790px;
+    margin-left: 10px;
+    font-size: 16pt; 
+    text-align: left; 
+    color: black;
+    padding: 4px; 
+    box-sizing: border-box;
+}
+
+#create_cho{
+    margin-top: 30px;
+    margin-left: 10px;
+    color: rgb(51, 49, 49);
+}
+#chk_name{
+    margin-left: 30px;
+}
+input[type="checkbox"]{
+    display: none;
+}
+input[type="checkbox"] + label{
+    margin-left: 10px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #707070;
+    position: relative;
+}
+input[id="chk_name"]:checked + label::after{
+    content: '✔';
+    font-size: 25px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    position: absolute;
+    margin-left: 7px;
+    left: 0;
+    top: 0;
+}
+
+#create_name{
+    margin-top: 20px;
+    margin-left: 10px;
+    color: rgb(51, 49, 49);
+}
+
+#name_txtbox {
+    border: 1px solid #707070;
+    border-radius: 1px;
+    height: 40px;
+    width: 1790px;
+    margin-left: 10px;
+    font-size: 16pt; /*폰트 크기*/
+    text-align: left; /*텍스트 위치*/
+    color: black;
+    padding: 4px; /*안쪽 여백*/
+    box-sizing: border-box;
+}
+
+#btnbar{
+    background-color: #179063;
+    height: 85px;
+    width: 100vw;
+}
+
+#yes_btn{
+    margin-top: 15px;
+    float: right;
+    margin-right: 80px;
+}
+
+#no_btn{
+    margin-top: 15px;
+    float: right;
+    margin-right: 20px;
+}
+
+#close{
+    float: right;
+    margin-right: 40px;
+}
