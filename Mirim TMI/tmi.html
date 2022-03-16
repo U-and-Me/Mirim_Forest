@@ -16,7 +16,7 @@
         let click_cnt = 0;
         window.onload=function(){
             button1=document.getElementById("button1"); //초기화  
-            button2=document.getElementById("button2"); //초기화
+            button2=document.getElementById("button2"); 
              
             m = function makeImg(){
                 count++;
@@ -29,11 +29,11 @@
                 }
             }      
             t = function(){
-                setTimeout(m,500);  //0.5초뒤 m을 실행해라
-                auto=setInterval(m, 200); //1초마다 m을 실행해라
-            }  //10번 실행하면 멈추도록 만들어 보세요
+                setTimeout(m,500);  //0.5초뒤
+                auto=setInterval(m, 200); //1초마다
+            }  
      
-            button1.onclick=t; //클릭하면 t 실행해라
+            button1.onclick=t; //클릭하면 실행
         }
      
       </script>
