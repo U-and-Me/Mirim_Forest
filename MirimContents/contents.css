@@ -1,0 +1,33 @@
+body {
+    margin: 0%;
+
+    height: 100vh;
+    background-image: url('../image/index_bg.png');
+    background-repeat : no-repeat;
+    background-size : cover;
+}
+
+#titlebar{
+    background-color: #179063;
+    height: 100px;
+    width: 100vw;
+}
+
+#btnbar{
+    margin-top: 200px;
+}
+
+#btn_goEnquiry{
+    margin-left: 130px;
+}
+#btn_goTmi{
+    margin-left: 250px;
+}
+#btn_goWriting{
+    margin-left: 360px;
+}
+
+#close{
+    float: right;
+    margin-right: 40px;
+}
