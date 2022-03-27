@@ -77,6 +77,7 @@ let cur_qus = 1; // 현재 테스트 질문
 let cur_pos = 0; // 테스트 퍼센트 바 위치
 let qus_arr = []; // 랜덤 질문 배열
 let cur_ind = 0; // 현재 질문 인덱스
+let margin_Left = 50; // 현재 위치를 보여주기 위한 마진
 
 RandomQuestion();
 
@@ -101,6 +102,8 @@ Test();
 // 테스트하기
 function Test(){
     if(cur_ind < 20){
+        if(cur_ind > 0)
+            CurPosition();
        ShowQuestion();
     }else{ // 테스트가 끝났을 경우 결과 화면으로 이동
         var link = 'ResultTest.html';
@@ -161,4 +164,11 @@ function chkClose(){
         location.replace(link);
         window.open(link);
     }
+}
+
+// 현재 위치 보여주기
+function CurPosition(){
+    var pos = document.getElementById('position').style.marginLeft = margin_Left+'px';
+
+    margin_Left += 51;
 }
