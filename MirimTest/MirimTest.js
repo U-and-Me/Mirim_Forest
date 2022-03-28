@@ -78,6 +78,7 @@ let cur_pos = 0; // 테스트 퍼센트 바 위치
 let qus_arr = []; // 랜덤 질문 배열
 let cur_ind = 0; // 현재 질문 인덱스
 let margin_Left = 50; // 현재 위치를 보여주기 위한 마진
+let mirim_percent = 0;  // 미림인 퍼센트
 
 RandomQuestion();
 
@@ -128,23 +129,22 @@ function ShowQuestion(){
     }else{
         ans_left.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_x[qus_arr[cur_ind]]+'</span>';
         ans_right.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_o[qus_arr[cur_ind]]+'</span>';
-    }
-        
+    }        
 }
 
 // 정답 체크
 function chkAnswer(user_ans){
     if(cur_ind % 2 == 0){
         if(user_ans == 1){ // 정답
-
+            mirim_percent += 5;
         }else{ // 오답
-
+            mirim_percent -= 5;
         }
     }else{
         if(user_ans == 2){ // 정답
-
+            mirim_percent += 5;
         }else{ // 오답
-
+            mirim_percent -= 5;
         }
     }
 
@@ -172,3 +172,5 @@ function CurPosition(){
 
     margin_Left += 51;
 }
+
+//export {mirim_percent};
