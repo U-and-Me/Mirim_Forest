@@ -72,11 +72,11 @@ let answer_x = {
     20 : 'O'
 }
 
-let tot_ans = 20;
+let tot_ans = Object.keys(question).length;   // 총 질문 수
 let cur_qus = 1; // 현재 테스트 질문
-let cur_pos = 0; // 테스트 퍼센트 바 위치
 let qus_arr = []; // 랜덤 질문 배열
 let cur_ind = 0; // 현재 질문 인덱스
+let random_quiz; // 답 랜덤 위치
 let margin_Left = 50; // 현재 위치를 보여주기 위한 마진
 let mirim_percent = 0;  // 미림인 퍼센트
 
@@ -84,7 +84,7 @@ RandomQuestion();
 
 // 랜덤 질문 생성
 function RandomQuestion(){
-    for(let i = 0; i < 20; i++){
+    for(let i = 0; i < tot_ans; i++){
         let index = Math.floor(Math.random() * tot_ans) + 1;
         qus_arr.push(index);
 
@@ -114,6 +114,7 @@ function Test(){
     }
 }
 
+// 질문 보여주기
 function ShowQuestion(){
     var qus_span = document.querySelector("#question");
     var ans_left = document.querySelector("#ans_left");
@@ -122,8 +123,10 @@ function ShowQuestion(){
     // 질문
     qus_span.innerHTML = '<span style="width:auto; height:auto; font-size:70px; font-weight:bold;">Q'+(cur_ind+1)+'. '+question[qus_arr[cur_ind]]+'</span>';
         
+    random_quiz = Math.floor((Math.random() * 2));
+
     // 답
-    if(cur_ind % 2 == 0){
+    if(random_quiz % 2 == 0){
         ans_left.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_o[qus_arr[cur_ind]]+'</span>';
         ans_right.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_x[qus_arr[cur_ind]]+'</span>';
     }else{
@@ -134,7 +137,7 @@ function ShowQuestion(){
 
 // 정답 체크
 function chkAnswer(user_ans){
-    if(cur_ind % 2 == 0){
+    if(random_quiz % 2 == 0){
         if(user_ans == 1){ // 정답
             mirim_percent += 5;
         }else{ // 오답
