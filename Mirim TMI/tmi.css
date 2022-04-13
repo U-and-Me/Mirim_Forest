@@ -18,6 +18,12 @@ body {
     margin-right: 40px;
 }
 
+#button1{
+    margin-top: 850px;
+    margin-right: 15px;
+    float: right;
+}
+
 #tmiCreate_go_btn{
     float: right;
     margin-top: 850px;
