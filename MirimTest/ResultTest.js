@@ -1,6 +1,6 @@
 "use strict"
 
-//import {mirim_percent} from './MirimTest.js';
+var mirim_percent = localStorage.getItem('mirim_percent');
 
 let image = "../image/ResultTest_"; // 이미지 경로
 let image_alt = "미림인 테스트"; // 이미지가 나올경우 대체 텍스트
@@ -28,11 +28,14 @@ function ShowImage(){
     console.log(mirim_percent);
     console.log("dddd");
 
+    /*
     var result_image = document.createElement("img"); // 이미지 태그 생성
     result_image.src = image;
     result_image.alt = image_alt;
 
     var result_bg = document.querySelector("#result_bg");
     result_bg.innerHTML(result_bg);
+
+    */
 
 }
