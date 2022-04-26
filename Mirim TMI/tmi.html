@@ -11,9 +11,10 @@
     </head>
     <div id="post_p">
     <script>
-        var button1; //전역변수 선언
+        var button1; //전역변수
         var count=-1;
         let click_cnt = 0;
+        var chk;
         window.onload=function(){
             button1=document.getElementById("button1"); //초기화  
             button2=document.getElementById("button2"); 
@@ -45,14 +46,12 @@
             <a href="../index.html">
                 <img src="../image/guestbook_close.png" id="close">
             </a>
-            <!-- <canvas id="myCanvas" width="200" height="200"></canvas> -->
-            <!--<a href="tmiCreate.html">
-                <img src="../image/tmiCreate_go_btn.png" id="tmiCreate_go_btn">
-            </a> -->
-            <button type="button" class="btn_image" id="button1">
+            <!--<button type="button" class="btn_image" id="button1">
                 <img src="../image/tmiCreate_go_btn.png">
             </button>
+            <a href="tmiCreate.html">-->
+                <img src="../image/tmiCreate_go_btn.png" id="button1"/>
+                    <meta http-equiv="refresh" content="3; url=tmiCreate.html"> 
         </div>
     </body>
-    <!--<button id="button1">click!</button>-->
 </html>
