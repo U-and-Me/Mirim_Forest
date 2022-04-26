@@ -1,0 +1,22 @@
+{
+  "name": "mirmiforest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index_db.js",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/U-and-Me/Mirim_Forest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/U-and-Me/Mirim_Forest/issues"
+  },
+  "homepage": "https://github.com/U-and-Me/Mirim_Forest#readme"
+}
