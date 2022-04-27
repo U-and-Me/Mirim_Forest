@@ -16,11 +16,15 @@
                 <img src="../image/guestbook_close.png" id="close">
             </a>
         </div>
-        <!-- <div id="txtbar">
-            <a href="../index.html">
-                <img src="../image/tmiCreate_yes_btn.png" id="no_btn">
-            </a>
-        </div> -->
+
+        <div id="container">
+            <div id="chatView">
+            </div>
+            <form id="chatForm" onsubmit="clickMsg()">
+                <input type="text" id="msg">
+                <input type="submit" id="send" value="전송">
+            </form>
+        </div>
         
     </body>
 </html>
