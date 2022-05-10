@@ -14,17 +14,17 @@ body {
 }
 
 #btnbar{
-    margin-top: 200px;
+    margin-top: 210px;
 }
 
 #btn_goEnquiry{
-    margin-left: 50px;
+    margin-left: 140px;
 }
 #btn_goTmi{
-    margin-left: 230px;
+    margin-left: 300px;
 }
 #btn_goWriting{
-    margin-left: 260px;
+    margin-left: 330px;
 }
 
 #close{
