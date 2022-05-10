@@ -1,11 +1,11 @@
 "use strict"
 
-
+/*
 var button1; //전역변수 선언
 var count=0;
 window.onload=function(){
+
 button1=document.getElementById("button1"); //초기화  
-button2=document.getElementById("button2"); //초기화
     
     m = function makeImg() {
         count++;
@@ -29,7 +29,7 @@ button2=document.getElementById("button2"); //초기화
         clearInterval(auto);
     }
 }
-
+*/
 /* var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 

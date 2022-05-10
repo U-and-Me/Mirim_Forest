@@ -9,49 +9,16 @@
         <script type="text/javascript" src="tmi.js"></script>
         
     </head>
-    <div id="post_p">
-    <script>
-        var button1; //전역변수
-        var count=-1;
-        let click_cnt = 0;
-        var chk;
-        window.onload=function(){
-            button1=document.getElementById("button1"); //초기화  
-            button2=document.getElementById("button2"); 
-             
-            m = function makeImg(){
-                count++;
-                img=document.createElement("img");
-                img.src= "../image/MirimTMI_memo.png"
-                img.width="200"; img.height="200";
-                document.body.appendChild(img);
-                if(count == click_cnt){ 
-                    clearInterval(auto);
-                }
-            }      
-            t = function(){
-                setTimeout(m,500);  //0.5초뒤
-                auto=setInterval(m, 200); //1초마다
-            }  
-     
-            button1.onclick=t; //클릭하면 실행
-        }
-     
-      </script>
-      </div>
-    <body style="overflow-y: hidden" ></body>
-    
+       
     <body>
         <div id="titlebar">
             <a href="../index.html">
                 <img src="../image/guestbook_close.png" id="close">
             </a>
-            <button type="button" class="btn_image" id="button1">
-                <img src="../image/tmiCreate_go_btn.png">
-            </button>
             <a href="tmiCreate.html">
                 <img src="../image/tmiCreate_go_btn.png" id="button1"/>
-                    <meta http-equiv="refresh" content="3; url=tmiCreate.html"> 
+                    <meta http-equiv="refresh" content=" url=tmiCreate.html"> 
+            </a>
         </div>
     </body>
 </html>
