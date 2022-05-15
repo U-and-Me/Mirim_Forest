@@ -2,14 +2,15 @@ body {
     margin: 0%;
 
     height: 100vh;
-    background-image: url('../image/guestbook_bg.png');
+    /*background-image: url('../image/guestbook_bg.png');*/
+    background-color: #D3FFAC;
     background-repeat : no-repeat;
     background-size : cover;
 
 }
 
 #titlebar{
-    background-color: #179063;
+    background-color: #619F63;
     height: 100px;
     width: 100vw;
 }
@@ -37,10 +38,11 @@ body {
 }
 
 #container {
-    margin-top: 730px;
+    margin-top: 30px;
 }
 #chatView {
-    height: 90%;
+    width: 100vw;
+    height: 730px;
     overflow-y: scroll;
 }
 #chatForm {
