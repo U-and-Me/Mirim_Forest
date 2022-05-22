@@ -1,12 +1,13 @@
 const mysql = require('mysql');
+var db_config = require('./.config.json');
 
 // mysql 접속 설정
 const conn = mysql.createConnection({
-    host : 'localhost',
+    host : db_config.host,
     port : '3306',
-    user : 'root',
-    password : 'mirim',
-    database : 'mirimforest_db'
+    user : db_config.user,
+    password : db_config.password,
+    database : db_config.database
 });
 
 conn.connect((err) => {
