@@ -11,4 +11,15 @@ ctx.fill();
 ctx.closePath();
 */
 
+var temp;
+
+function title_txtbox() {
+    var title_txtbox = document.getElementById("title_txtbox").value;
+    temp = title_txtbox;
+}
+
+function text_txtbox() {
+    document.getElementById("text_txtbox").value = temp;
+}
+
 
