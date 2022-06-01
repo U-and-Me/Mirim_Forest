@@ -1,12 +1,20 @@
 var express = require('express');
+var http = require('http');
+var path = require('path');
+var dbconn = require('./index_db');
+
 var app = express();
 
-var port = app.listen(process.env.port || 5050);
+app.set('port', process.env.PORT || 3000);
+app.use(express.static(__dirname + '/'));
 
-app.get('/', function(req, res){
-    res.sendFile(__dirname + '/index.html');
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + 'index.html');
 });
 
-app.listen(port, function(){
+app.use('./MirimWriting', require('./MirimWriting/writing'));
 
+
+http.createServer(app).listen(3000, function(){
+    //console.log(__dirname);
 });

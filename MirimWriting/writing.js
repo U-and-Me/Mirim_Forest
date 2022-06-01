@@ -22,7 +22,7 @@ function showMessage(message){
 
 // DB에 저장
 function saveData(message){
-    conn.query('INSERT INTO WRITING(user_write) VALUES("' + message + '")', function(err, results, fiels){
+    dbconn.query('INSERT INTO WRITING(user_write) VALUES("' + message + '")', function(err, results, fiels){
         console.log(arguments);
     });
 }
@@ -30,8 +30,8 @@ function saveData(message){
 // 페이지 로딩 시 글짓기 데이터 가져와서 출력
 function bringData(){
     var sql = 'SELECT * FROM WRITING';
-/*
+
     dbconn.query(sql, function(err, results, field){
         console.log(arguments);
-    });*/
+    });
 }

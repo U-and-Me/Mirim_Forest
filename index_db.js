@@ -19,3 +19,7 @@ conn.connect((err) => {
         console.log("DB 접속 성공");
     }
 });
+
+function init(){
+    return mysql.createConnection(conn);
+}
