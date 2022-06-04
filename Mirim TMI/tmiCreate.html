@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <title>미림숲🌳 Tmi 생성</title>
         <link rel="stylesheet" type="text/css" href="tmiCreate.css"/>
-        <script type="text/javascript" src="tmi.js"></script>
+        <script type="text/javascript" src="tmiCreate.js"></script>
     </head>
     <!--<script>
         var button1; //전역변수 선언
@@ -51,7 +51,11 @@
             <h2>자유롭게 글을 남겨보세요</h2><br>
             <div id="tmibox2">
                 <h3 id="create_title">글 제목</h3>
+                ​<input type="text" id="input"><br>
+                <button onclick="input()">입력받기</button>
+                <!--
                 <input type="text" id="title_txtbox">
+                -->
 
                 <!-- <h3 id="create_text">내용</h3>
                 <input type="text" id="text_txtbox">
@@ -66,7 +70,8 @@
         </div>
         <div id="btnbar">
             <a href="tmi.html">
-                <img src="../image/tmiCreate_yes_btn.png" id="yes_btn">
+                <button onclick="output()">출력하기</button>
+                <!--<img src="../image/tmiCreate_yes_btn.png" id="yes_btn">-->
             </a>
             <a href="../index.html">
                 <img src="../image/tmiCreate_no_btn.png" id="no_btn">

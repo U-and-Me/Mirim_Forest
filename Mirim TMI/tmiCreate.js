@@ -1,5 +1,17 @@
 "use strict"
 
+var temp;
+
+function input(){
+    var input = document.getElementById("input").value;
+    temp = input;
+}
+
+function output(){
+    document.getElementById("output").value = temp;
+}
+
+
 /*
 var button1; //전역변수 선언
 var count=0;
