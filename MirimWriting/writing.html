@@ -21,8 +21,8 @@
             <div id="chatView">
 
             </div>
-            <form id="chatForm">
-                <input type="text" id="msg">
+            <form id="chatForm" method="post" action="/process/send">
+                <input type="text" id="msg" name="name">
                 <input type="submit" id="send" value="전송" onclick="clickMsg()">
             </form>
         </div>
