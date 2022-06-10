@@ -24,8 +24,6 @@ app.get('/', (req, res) => {
 app.use('/MirimWriting', static(path.join(__dirname, 'MirimWriting')));
 app.use('/Mirim TMI', static(path.join(__dirname, 'Mirim TMI')));
 
-
-/*
 // mysql 접속 설정
 const conn = mysql.createConnection({
     host : db_config.host,
@@ -45,8 +43,6 @@ conn.connect((err) => {
     }
 });
 
-*/
-
 // 글쓰기 라우팅 함수
 router.route('/process/send').post(function(req, res){
     console.log('/process/send 호출됨');
@@ -54,6 +50,12 @@ router.route('/process/send').post(function(req, res){
     var paramId = req.body.name || req.query.name;
 
     console.log(paramId);
+
+    // DB에 글 저장
+    var sql = 'INSERT INTO WRITING VALUES("' + paramId + '")';
+    conn.query(sql, function(err, results){
+        if(err) throw err;
+    });
 
     
 });
