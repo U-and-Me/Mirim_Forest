@@ -9,9 +9,6 @@
     </head>
     <body>
         <div id="titlebar">
-            <!-- <a href="../MirimContents/contents.html">
-                <img src="../image/enquiry_backbtn.png" id="backbtn">
-            </a> -->
             <a href="../MirimContents/contents.html">
                 <img src="../image/guestbook_close.png" id="close">
             </a>
@@ -21,8 +18,8 @@
             <div id="chatView">
 
             </div>
-            <form id="chatForm">
-                <input type="text" id="msg">
+            <form id="chatForm" method="post" action="/process/send">
+                <input type="text" id="msg" name="name">
                 <input type="submit" id="send" value="전송" onclick="clickMsg()">
             </form>
         </div>
