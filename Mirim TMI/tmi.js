@@ -11,6 +11,7 @@ ctx.fill();
 ctx.closePath();
 */
 
+
 var temp;
 
 function title_txtbox() {
@@ -22,4 +23,10 @@ function text_txtbox() {
     document.getElementById("text_txtbox").value = temp;
 }
 
+var inputText=function(){
+    var a=document.querySelector("#nick").value;
+    document.querySelector("#two").innerText=a;
+    //document.querySelector("#one").value="";
+    document.querySelector("#nick").focus();
+};
 
