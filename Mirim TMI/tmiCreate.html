@@ -5,36 +5,8 @@
         <meta charset="utf-8">
         <title>미림숲🌳 Tmi 생성</title>
         <link rel="stylesheet" type="text/css" href="tmiCreate.css"/>
-        <script type="text/javascript" src="tmi.js"></script>
+        <script type="text/javascript" src="tmiCreate.js"></script>
     </head>
-    <!--<script>
-        var button1; //전역변수 선언
-        var count=0;
-        window.onload=function(){
-            button1=document.getElementById("button1"); //초기화  
-            button2=document.getElementById("button2"); //초기화
-             
-            m=function makeImg(){
-                count++;
-                img=document.createElement("img");
-                img.src="http://cdn.redmondpie.com/wp-content/uploads/2011/05/Angry-Birds.png"
-                img.width="100"; img.height="100";
-                document.body.appendChild(img);
-                if(count>10){ //10번 이상 실행하면
-                    clearInterval(auto);
-                }
-            }      
-            t=function(){
-                setTimeout(m,500);  //0.5초뒤 m을 실행해라
-                auto=setInterval(m, 200); //1초마다 m을 실행해라
-            }  //10번 실행하면 멈추도록 만들어 보세요
-     
-            button1.onclick=t; //클릭하면 t 실행해라
-            button2.onclick=function(){
-                clearInterval(auto);
-            }
-        }
-    </script>-->
     <body style="overflow-y: hidden" ></body>
     <body>
         <div id="titlebar">
@@ -44,28 +16,40 @@
             <a href="../index.html">
                 <img src="../image/guestbook_close.png" id="close">
             </a>
-        <!-- <button id="button1">click!</button>
-        <button id="button2">stop!</button> -->
+
         </div>
-        <div id="tmibox">
-            <h2>자유롭게 글을 남겨보세요</h2><br>
-            <div id="tmibox2">
-                <h3 id="create_title">글 제목</h3>
-                <input type="text" id="title_txtbox">
-                <h3 id="create_text">내용</h3>
-                <input type="text" id="text_txtbox">
+        <form name="tmi_form" method="get" action="./tmi.html">
+            <div id="tmibox">
+                <h2>자유롭게 글을 남겨보세요</h2><br>
+                <div id="tmibox2">
+                    <h3 id="create_title">글 제목</h3>
 
-                <h3 id="create_cho">익명</h3>
-                <input type="checkbox" id="chk_name">
-                <label for="chk_name"></label>
+                    <input type="text" id="title_txtbox">
+                    
 
-                <h3 id="create_name">이름(닉네임)</h3>
-                <input type="text" id="name_txtbox">
+                    <h3 id="create_text">내용</h3>
+                    <input type="text" id="text_txtbox">
+                    <!--
+                    <h3 id="create_cho">익명</h3>
+                    <input type="checkbox" id="chk_name">
+                    <label for="chk_name"></label>
+                    -->
+
+                    <h3 id="create_name">이름(닉네임)</h3>
+                    <input type="text" id="name_txtbox">
+                </div>
             </div>
-        </div>
+            <input type="submit" value="등록" />
+        </form>
         <div id="btnbar">
             <a href="tmi.html">
                 <img src="../image/tmiCreate_yes_btn.png" id="yes_btn">
+                <script>
+                    const title = document.getElementById("title_txtbox");
+                    function write(params) {
+                        console.log(title);
+                    }
+                </script>
             </a>
             <a href="../index.html">
                 <img src="../image/tmiCreate_no_btn.png" id="no_btn">

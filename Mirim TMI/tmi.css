@@ -1,9 +1,10 @@
 body {
     margin: 0%;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-image: url('../image/tmi_bg.png');
     background-repeat : no-repeat;
-    background-size : cover;
+    
 }
 
 #close{
@@ -13,8 +14,8 @@ body {
 }
 
 #button1{
-    margin-top: 920px;
-    margin-right: 15px;
+    margin-top: 900px;
+    margin-right: 3px;
     float: right;
 }
 
@@ -23,3 +24,97 @@ body {
     margin-top: 850px;
     margin-right: 25px;
 }
+
+
+#messagebox{
+    position: relative;
+    /*background-image: url('../image/guestbook_messagebox.png');*/
+
+    height: 182px;
+    width: 1517px;
+
+    margin-left: 2290px;
+    margin-top: 920px;
+}
+
+#sendbtn{
+    position: absolute;
+    background-image: url('../image/guestbook_send.png');
+
+    height: 45px;
+    width: 44px;
+
+    right: 25px;
+    bottom: 15px;
+}
+
+#name{
+    background-color: #FBFF93;
+
+    height:40px;
+    width: 380px;
+
+    border: none;
+}
+
+#TMIbook{
+    background-color: #FBFF93;
+
+    height: 300px;
+    width: 380px;
+
+    border: none;
+    font-size: 15px;
+}
+
+#result{
+    margin-left: 200px;
+    margin-top: 200px;
+}
+
+/*
+#messagebox{
+    position: relative;
+    background-image: url('../image/guestbook_messagebox.png');
+
+    height: 182px;
+    width: 1517px;
+
+    margin-left: 28%;
+    margin-top: 48%;
+}
+
+
+
+#sendbtn{
+    position: absolute;
+    background-image: url('../image/guestbook_send.png');
+
+    height: 45px;
+    width: 44px;
+
+    right: 3%;
+    bottom: 20%;
+}
+
+#name{
+    margin-left: 10%;
+    margin-top: 1%;
+
+    height:40px;
+    width: 400px;
+
+    border: none;
+}
+
+#TMIbook{
+    margin-left: 10%;
+    margin-top: 1%;
+
+    height: 80px;
+    width: 1200px;
+
+    border: none;
+    font-size: 15px;
+}*/
+
