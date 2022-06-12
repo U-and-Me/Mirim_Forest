@@ -2,14 +2,15 @@ body {
     margin: 0%;
 
     height: 100vh;
-    background-image: url('../image/guestbook_bg.png');
+    /*background-image: url('../image/guestbook_bg.png');*/
+    background-color: #D3FFAC;
     background-repeat : no-repeat;
     background-size : cover;
 
 }
 
 #titlebar{
-    background-color: #179063;
+    background-color: #619F63;
     height: 100px;
     width: 100vw;
 }
@@ -36,4 +37,35 @@ body {
     margin-right: 40px;
 }
 
+#container {
+    margin-top: 30px;
+}
+#chatView {
+    width: 100vw;
+    height: 700px;
+    overflow-y: scroll;
+}
+#chatForm {
+    text-align: center;
+}
+#msg {
+    width: 80%;
+    height: 85px;
+    border-radius: 8px;
 
+    margin-top: -100px;
+
+    font-size: 25px;
+}
+#send {
+    width: 16%;
+    height: 84px;
+    border-radius: 50px;
+    background: black;
+    color: white;
+
+
+    margin-left: 25px;
+
+    font-size: 30px;
+}

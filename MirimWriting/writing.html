@@ -5,22 +5,24 @@
         <meta charset="utf-8">
         <title>미림숲🌳</title>
         <link rel="stylesheet" type="text/css" href="writing.css"/>
-        <script type="text/javascript" src="writing.js"></script>
+        <script type="text/javascript" src="writing.js" defer></script>
     </head>
     <body>
         <div id="titlebar">
-            <a href="../index.html">
-                <img src="../image/enquiry_backbtn.png" id="backbtn">
-            </a>
-            <a href="../index.html">
+            <a href="../MirimContents/contents.html">
                 <img src="../image/guestbook_close.png" id="close">
             </a>
         </div>
-        <!-- <div id="txtbar">
-            <a href="../index.html">
-                <img src="../image/tmiCreate_yes_btn.png" id="no_btn">
-            </a>
-        </div> -->
+
+        <div id="container">
+            <div id="chatView">
+
+            </div>
+            <form id="chatForm" method="post" action="/process/send">
+                <input type="text" id="msg" name="name">
+                <input type="submit" id="send" value="전송" onclick="clickMsg()">
+            </form>
+        </div>
         
     </body>
 </html>
