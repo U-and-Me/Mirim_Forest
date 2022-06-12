@@ -16,12 +16,3 @@ function showMessage(message){
     return true;
 */
 }
-
-// 페이지 로딩 시 글짓기 데이터 가져와서 출력
-function bringData(){
-    var sql = 'SELECT * FROM WRITING';
-
-    conn.query(sql, function(err, results, field){
-        console.log(arguments);
-    });
-}

@@ -5,7 +5,6 @@
         <meta charset="utf-8">
         <title>미림숲🌳</title>
         <link rel="stylesheet" type="text/css" href="contents.css"/>
-        <script type="text/javascript" src="contents.js"></script>
     </head>
     <body>
         <div id="titlebar">
@@ -20,9 +19,14 @@
             <a href="../Mirim TMI/tmi.html">
                 <img src="../image/contents_TMI_btn.png" id="btn_goTmi">
             </a>
-            <a href="../MirimWriting/writing.html">
+            <a onclick="movePage_w()">
                 <img src="../image/contents_writing_btn.png" id="btn_goWriting">
             </a>
         </div>
     </body>
+    <script>
+        function movePage_w(){
+            location.href = "/MirimWriting";
+        }
+    </script>
 </html>
