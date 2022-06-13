@@ -18,17 +18,17 @@
             </a>
 
         </div>
-        <form name="tmi_form" method="get" action="./tmi.html">
+        <form id="tmiPost" method="post" action="/process/tmisend">
             <div id="tmibox">
                 <h2>자유롭게 글을 남겨보세요</h2><br>
                 <div id="tmibox2">
                     <h3 id="create_title">글 제목</h3>
 
-                    <input type="text" id="title_txtbox">
+                    <input type="text" id="title_txtbox" name="title">
                     
 
                     <h3 id="create_text">내용</h3>
-                    <input type="text" id="text_txtbox">
+                    <input type="text" id="text_txtbox" name="content">
                     <!--
                     <h3 id="create_cho">익명</h3>
                     <input type="checkbox" id="chk_name">
@@ -36,21 +36,12 @@
                     -->
 
                     <h3 id="create_name">이름(닉네임)</h3>
-                    <input type="text" id="name_txtbox">
+                    <input type="text" id="name_txtbox" name="nickname">
                 </div>
             </div>
-            <input type="submit" value="등록" />
+            <input type="submit" id="send" value="">
         </form>
         <div id="btnbar">
-            <a href="tmi.html">
-                <img src="../image/tmiCreate_yes_btn.png" id="yes_btn">
-                <script>
-                    const title = document.getElementById("title_txtbox");
-                    function write(params) {
-                        console.log(title);
-                    }
-                </script>
-            </a>
             <a href="../index.html">
                 <img src="../image/tmiCreate_no_btn.png" id="no_btn">
             </a>
