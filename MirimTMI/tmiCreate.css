@@ -1,5 +1,6 @@
 body {
     margin: 0%;
+    width: 100%;
     height: 100vh;
     background-image: url('../image/guestbook_bg.png');
     background-repeat : no-repeat;
@@ -13,38 +14,43 @@ body {
     margin-left: 10px;
 }
 
+/* 맨 위 초록색 박스*/
 #titlebar{
     background-color: #179063;
     height: 100px;
     width: 100vw;
 }
 
+/* 갈색 박스 */
 #tmibox{
     background-color: white;
     padding: 25px;
     border: 7px solid #686247;
     margin: 15px;
-    height: 700px;
+    height: 1160px;
 }
 
+
+/*연두색 박스*/
 #tmibox2{
     background-color: #D3FFAC;
     padding: 5px;
     margin: 0px;  
-    height: 600px;
+    height: 1050px;
 }
 
 
+/* 제목 상자 */
 #create_title{
-    margin-left: 15px;
+    margin-left: 30px;
     color: rgb(51, 49, 49);
 }
 #title_txtbox{
     border: 1px solid #707070;
     border-radius: 1px;
     height: 40px;
-    width: 1790px;
-    margin-left: 10px;
+    width: 2400px;
+    margin-left: 20px;
     font-size: 16pt; /*폰트 크기*/
     text-align: left; /*텍스트 위치*/
     color: black;
@@ -52,18 +58,18 @@ body {
     box-sizing: border-box;
 }
 
-
+/* 내용 상자 */
 #create_text{
-    margin-top: 20px;
-    margin-left: 15px;
+    margin-top: 40px;
+    margin-left: 30px;
     color: rgb(51, 49, 49);
 }
 #text_txtbox{
     border: 1px solid #707070;
     border-radius: 1px;
-    height: 200px;
-    width: 1790px;
-    margin-left: 10px;
+    height: 300px;
+    width: 2400px;
+    margin-left: 20px;
     font-size: 16pt; 
     text-align: left; 
     color: black;
@@ -102,18 +108,18 @@ input[id="chk_name"]:checked + label::after{
     top: 0;
 }
 
+/* 이름 상자 */
 #create_name{
-    margin-top: 20px;
-    margin-left: 10px;
+    margin-top: 50px;
+    margin-left: 30px;
     color: rgb(51, 49, 49);
 }
-
 #name_txtbox {
     border: 1px solid #707070;
     border-radius: 1px;
     height: 40px;
-    width: 1790px;
-    margin-left: 10px;
+    width: 2400px;
+    margin-left: 20px;
     font-size: 16pt; /*폰트 크기*/
     text-align: left; /*텍스트 위치*/
     color: black;
@@ -125,6 +131,7 @@ input[id="chk_name"]:checked + label::after{
     background-color: #179063;
     height: 85px;
     width: 100vw;
+    margin-top: 20px;
 }
 
 #send{
