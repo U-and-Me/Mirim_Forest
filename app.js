@@ -51,14 +51,15 @@ app.get('/MirimWriting', function(req, res){
 
     // DB 글 가져오기
     var sql = 'SELECT * FROM WRITING';
-    var msg = {};
+    var i = 0;
 
     conn.query(sql, function(err, results, field){
-       msg = results;
+       //console.log(results[i].user_write);
+       var write = results[i].user_write;
+       
+       i++;
     });
 
-    
-    
 });
 
 app.get('/MirimTMI', function(req, res){
@@ -66,11 +67,18 @@ app.get('/MirimTMI', function(req, res){
     res.sendFile(__dirname + '/MirimTMI/tmi.html');
 
     // DB 글 가져오기
-    var sql = 'SELECT * FROM WRITING';
-    var msg = {};
+    var sql = 'SELECT * FROM tmi';
+    var i = 0;
 
     conn.query(sql, function(err, results, field){
-       msg = results;
+      // console.log(results[i].title);
+      // console.log(results[i].content);
+      // console.log(results[i].nickname);
+      var title = results[i].title;
+      var content= results[i].content;
+      var nickname = results[i].nickname;
+
+      i++;
     });    
     
 });

@@ -10,11 +10,8 @@
     <body style="overflow-y: hidden" ></body>
     <body>
         <div id="titlebar">
-            <a href="tmi.html">
+            <a onclick="movePage_b()">
                 <img src="../image/enquiry_backbtn.png" id="backbtn">
-            </a>
-            <a href="../index.html">
-                <img src="../image/guestbook_close.png" id="close">
             </a>
 
         </div>
@@ -42,9 +39,14 @@
             <input type="submit" id="send" value="">
         </form>
         <div id="btnbar">
-            <a href="../index.html">
+            <a onclick="movePage_b()">
                 <img src="../image/tmiCreate_no_btn.png" id="no_btn">
             </a>
         </div>
+        <script>
+            function movePage_b(){
+                location.href = "/MirimTMI";
+            }
+        </script>
     </body>
 </html>
