@@ -1,5 +1,6 @@
 body {
     margin: 0%;
+    margin-right: 300px;
 }
 
 #result_bg{
@@ -12,7 +13,7 @@ body {
 #txt1{
     float: right;
 
-    margin-top: -910px;
+    margin-top: -900px;
     margin-right: 170px;
     
     font-weight: bold;

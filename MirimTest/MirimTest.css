@@ -1,10 +1,13 @@
 body {
     margin: 0%;
+    background-color: rgb(255, 245, 178);
+    background-repeat : no-repeat;
+    
 }
 
 #pos_bar{
-    margin-top: 70px;
-    margin-left: 450px;
+    margin-top: 150px;
+    margin-left: 740px; /*바*/
     position: relative;
 }
 
@@ -18,25 +21,25 @@ body {
 #closebtn{
     float: right;
 
-    margin-top: -150px;
+    margin-top: -240px;
     margin-right: 50px;
 }
 
 #test_bg{
     position: relative;
     background-image: url('../image/MirimTest_bg.png');
-
-    width: 1651px;
+    background-repeat : no-repeat;
+    width: 1650px;
     height: 754px;
 
-    margin-left: 140px;
-    margin-top: 40px;
+    margin-left: 440px; /*게임창*/
+    margin-top: 100px;
 }
 
 #question{
     position: absolute;
-    margin-left: 150px;
-    margin-top: 100px;
+    margin-left: 70px;
+    margin-top: 90px;
 }
 
 #ans_left{
@@ -48,8 +51,8 @@ body {
 
     border: none;
 
-    margin-top: 370px;
-    margin-left: 170px;
+    margin-top: 340px;
+    margin-left: 160px;
 }
 
 #ans_right{
