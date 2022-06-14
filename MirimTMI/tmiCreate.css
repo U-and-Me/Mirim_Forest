@@ -127,10 +127,14 @@ input[id="chk_name"]:checked + label::after{
     width: 100vw;
 }
 
-#yes_btn{
+#send{
+    background-image: url('../image/tmiCreate_yes_btn.png');
     margin-top: 15px;
     float: right;
     margin-right: 80px;
+
+    height: 65px;
+    width: 105px;
 }
 
 #no_btn{

@@ -16,7 +16,7 @@
             <a href="../MirimEnquiry/enquiry.html">
                 <img src="../image/contents_Enquiry_btn.png" id="btn_goEnquiry">
             </a>
-            <a href="../Mirim TMI/tmi.html">
+            <a onclick="movePage_t()">
                 <img src="../image/contents_TMI_btn.png" id="btn_goTmi">
             </a>
             <a onclick="movePage_w()">
@@ -27,6 +27,9 @@
     <script>
         function movePage_w(){
             location.href = "/MirimWriting";
+        }
+        function movePage_t(){
+            location.href = "/MirimTMI";
         }
     </script>
 </html>

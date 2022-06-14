@@ -4,6 +4,7 @@ var path = require('path');
 
 const mysql = require('mysql');
 var db_config = require('./.config.json');
+var writing = require('./MirimWriting/writing');
 
 var static = require('serve-static');
 var bodyParser = require('body-parser');
@@ -19,7 +20,7 @@ app.set('port', process.env.PORT || 3000);
 
 app.use(express.static(__dirname + '/'));
 app.use('/MirimWriting', static(path.join(__dirname, '/MirimWriting')));
-app.use('/Mirim TMI', static(path.join(__dirname, 'Mirim TMI')));
+app.use('/MirimTMI', static(path.join(__dirname, 'MirimTMI')));
 
 // mysql 접속 설정
 const conn = mysql.createConnection({
@@ -50,11 +51,36 @@ app.get('/MirimWriting', function(req, res){
 
     // DB 글 가져오기
     var sql = 'SELECT * FROM WRITING';
+    var i = 0;
 
     conn.query(sql, function(err, results, field){
-       console.log(results);
-
+       //console.log(results[i].user_write);
+       var write = results[i].user_write;
+       
+       i++;
     });
+
+});
+
+app.get('/MirimTMI', function(req, res){
+    console.log("오늘 나의 TMi");
+    res.sendFile(__dirname + '/MirimTMI/tmi.html');
+
+    // DB 글 가져오기
+    var sql = 'SELECT * FROM tmi';
+    var i = 0;
+
+    conn.query(sql, function(err, results, field){
+      // console.log(results[i].title);
+      // console.log(results[i].content);
+      // console.log(results[i].nickname);
+      var title = results[i].title;
+      var content= results[i].content;
+      var nickname = results[i].nickname;
+
+      i++;
+    });    
+    
 });
 
 // 글쓰기 라우팅 함수
@@ -70,8 +96,26 @@ router.route('/process/send').post(function(req, res){
     conn.query(sql, function(err, results){
         if(err) throw err;
     });
+});
 
-    
+// TMI 라우팅 함수
+router.route('/process/tmisend').post(function(req, res){
+    console.log('/process/tmisend 호출됨');
+
+    var paramTitle = req.body.title || req.query.title;
+    var paramContent = req.body.content || req.query.ticontenttle;
+    var paramNickname = req.body.nickname || req.query.nickname;
+
+    console.log(paramTitle + "  " + paramContent + "   " + paramNickname);
+
+    // DB에 내용 저장
+    var sql = 'INSERT INTO TMI VALUES("' + paramTitle + '", "' + paramContent + '", "' + paramNickname + '")';
+    conn.query(sql, function(err, results){
+        if(err) throw err;
+    });
+
+    res.redirect('/MirimTMI/tmi.html');
+
 });
 
 app.use('/', router);
