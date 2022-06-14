@@ -10,9 +10,10 @@ body {
 
 #bar{
     background-image: url('image/index_titlebar.png');
+    
 
-    height: 139px;
-    width: 100vw;
+    height: 130px;
+    width: 100%;
 }
 
 #logo{
@@ -35,13 +36,24 @@ body {
 }
 
 #testbtn{
-    margin-top: 130px;
-    margin-left: 230px;
+    height: 40%;
+    width: 20%;
+    margin-top: 140px;
+    margin-left: 200px;
 }
 
 #forestbtn{
     float: right;
+    height: 40%;
+    width: 20%;
+    margin-top: 140px;
+    margin-right: 1000px;
+}
 
-    margin-top: 130px;
-    margin-right: 230px;
+#TMIbtn{
+    float: right;
+    height: 40%;
+    width: 20%;
+    margin-top: -530px;
+    margin-right: 220px;
 }
