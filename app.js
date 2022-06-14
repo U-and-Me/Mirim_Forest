@@ -4,11 +4,12 @@ var path = require('path');
 
 const mysql = require('mysql');
 var db_config = require('./.config.json');
-var writing = require('./MirimWriting/writing');
 
 var static = require('serve-static');
 var bodyParser = require('body-parser');
-var jsdom = require('jsdom');
+var jsdom = require("jsdom");
+var cheerio = require('cheerio');
+var request = require('request');
 
 var app = express();
 var router = express.Router();
@@ -45,21 +46,60 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + 'index.html');
 });
 
+var $;
+var html_write;
+var html_reset;
+request('http://localhost:3000/MirimWriting/writing.html', function(error, response, html){
+            if(error) {throw error};
+
+            $ = cheerio.load(html);
+            
+            //console.log($.html());
+
+            html_write = $.html();
+            html_write += `
+            <script>
+                var chatView = document.querySelector("#chatView");
+            `;
+
+            html_reset = html_write;
+})
+
 app.get('/MirimWriting', function(req, res){
     console.log("이어서 글짓기");
-    res.sendFile(__dirname + '/MirimWriting/writing.html');
-
+    //res.sendFile(__dirname + '/MirimWriting/writing.html');
+    
     // DB 글 가져오기
     var sql = 'SELECT * FROM WRITING';
+    var write = {};
     var i = 0;
 
     conn.query(sql, function(err, results, field){
        //console.log(results[i].user_write);
-       var write = results[i].user_write;
-       
-       i++;
+
+        write = results;
     });
 
+    setTimeout(function(){
+        //console.log(write);
+
+        while(i < write.length){
+        html_write += `
+         chatView.innerHTML += '<div style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${write[i].user_write}</div>';    
+        `;
+
+        i++;
+        }
+        html_write += `
+            </script>
+        `;
+
+        //console.log(html_write);
+
+        res.send(html_write);
+
+        html_write = html_reset;
+    }, 500);
 });
 
 app.get('/MirimTMI', function(req, res){
@@ -71,12 +111,12 @@ app.get('/MirimTMI', function(req, res){
     var i = 0;
 
     conn.query(sql, function(err, results, field){
-      // console.log(results[i].title);
-      // console.log(results[i].content);
-      // console.log(results[i].nickname);
-      var title = results[i].title;
-      var content= results[i].content;
-      var nickname = results[i].nickname;
+        // console.log(results[i].title);
+        // console.log(results[i].content);
+        // console.log(results[i].nickname);
+        var title = results[i].title;
+        var content= results[i].content;
+        var nickname = results[i].nickname;
 
       i++;
     });    

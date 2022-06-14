@@ -6,6 +6,7 @@ body {
     background-color: #D3FFAC;
     background-repeat : no-repeat;
     background-size : cover;
+    overflow-y: hidden;
 
 }
 
