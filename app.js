@@ -55,7 +55,7 @@ app.get('/MirimWriting', function(req, res){
 
     conn.query(sql, function(err, results, field){
        //console.log(results[i].user_write);
-       var write = results[i].user_write;
+        // var write = results[i].user_write;
        
        i++;
     });
@@ -70,6 +70,7 @@ app.get('/MirimTMI', function(req, res){
     var sql = 'SELECT * FROM tmi';
     var i = 0;
 
+    // 콘솔로 보기
     conn.query(sql, function(err, results, field){
       // console.log(results[i].title);
       // console.log(results[i].content);
