@@ -52,22 +52,8 @@ app.get('/MirimWriting', function(req, res){
     var sql = 'SELECT * FROM WRITING';
 
     conn.query(sql, function(err, results, field){
-       //console.log(results);
+       console.log(results);
 
-        var i = 0;
-        while(results[i] != null){
-            var message = results[i];
-            console.log(message);
-            
-            var dom = new jsdom.JSDOM(__dirname + '/MirimWrting/writing.html');
-
-            var chatView = dom.window.documennt;
-            console.log(chatView);
-
-            chatView += '<div style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">'+message+'</div>';    
-
-           i++;
-        }
     });
 });
 
