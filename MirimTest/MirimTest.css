@@ -1,6 +1,10 @@
 body {
     margin: 0%;
-    background-color: rgb(255, 245, 178);
+    /*background-color: rgb(255, 245, 178);*/
+    background-image: url('../image/MirimTest_bg_2.png');
+    position: fixed; 
+    /*background-size: 1920px 1080px;*/
+    background-size: 2560px 1440px;
     background-repeat : no-repeat;
     
 }
@@ -25,6 +29,7 @@ body {
     margin-right: 50px;
 }
 
+/*
 #test_bg{
     position: relative;
     background-image: url('../image/MirimTest_bg.png');
@@ -32,9 +37,24 @@ body {
     width: 1650px;
     height: 754px;
 
-    margin-left: 440px; /*게임창*/
+    margin-left: 440px;
     margin-top: 100px;
 }
+*/
+
+
+#test_bg{
+    position: relative;
+    background-image: url('../image/MirimTest_testbar.png');
+    background-repeat : no-repeat;
+    width: 2050px;
+    height: 754px;
+
+    margin-left: 440px;
+    margin-top: 100px;
+}
+
+
 
 #question{
     position: absolute;
@@ -43,7 +63,7 @@ body {
 }
 
 
-
+/*
 #ans_left{
     background-color: transparent;
     background-image: url('../image/MirimTest_left.png');
@@ -68,26 +88,26 @@ body {
 
     margin-left: 270px;
 }
+*/
 
 
-/*
 #ans_left{
     background-color: transparent;
-    background-image: url('../image/MirimTest_btn.png');
-
+    background-image: url('../image/MirimTest_speechBubble.png');
+    background-repeat : no-repeat;
     width: 524px;
     height: 320px;
 
     border: none;
 
-    margin-top: 340px;
+    margin-top: 440px;
     margin-left: 160px;
 }
 
 #ans_right{
     background-color: transparent;
-    background-image: url('../image/MirimTest_btn.png');
-
+    background-image: url('../image/MirimTest_speechBubble.png');
+    background-repeat : no-repeat;
     width: 524px;
     height: 320px;
 
@@ -95,4 +115,3 @@ body {
 
     margin-left: 270px;
 }
-*/
