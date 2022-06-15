@@ -72,7 +72,7 @@ let answer_x = {
     20 : 'O'
 }
 
-let tot_ans = Object.keys(question).length;   // 총 질문 수
+let tot_ans = Object.keys(question).length;    // 총 질문 수
 let cur_qus = 1; // 현재 테스트 질문
 let qus_arr = []; // 랜덤 질문 배열
 let cur_ind = 0; // 현재 질문 인덱스
@@ -128,11 +128,11 @@ function ShowQuestion(){
 
     // 답
     if(random_quiz % 2 == 0){
-        ans_left.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_o[qus_arr[cur_ind]]+'</span>';
-        ans_right.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_x[qus_arr[cur_ind]]+'</span>';
+        ans_left.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#402B26;">'+answer_o[qus_arr[cur_ind]]+'</span>';
+        ans_right.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#402B26;">'+answer_x[qus_arr[cur_ind]]+'</span>';
     }else{
-        ans_left.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_x[qus_arr[cur_ind]]+'</span>';
-        ans_right.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#C9FAFF;">'+answer_o[qus_arr[cur_ind]]+'</span>';
+        ans_left.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#402B26;">'+answer_x[qus_arr[cur_ind]]+'</span>';
+        ans_right.innerHTML = '<span style="font-size:100px; font-weight:bold; color:#402B26;">'+answer_o[qus_arr[cur_ind]]+'</span>';
     }        
 }
 

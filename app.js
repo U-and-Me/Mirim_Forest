@@ -77,7 +77,6 @@ app.get('/MirimWriting', function(req, res){
     var i = 0;
 
     conn.query(sql, function(err, results, field){
-
         write = results;
     });
 
@@ -130,6 +129,7 @@ app.get('/MirimTMI', function(req, res){
     var tmi = {};
     var i = 0;
 
+    // 콘솔로 보기
     conn.query(sql, function(err, results, field){
         // console.log(results[i].title);
         // console.log(results[i].content);
