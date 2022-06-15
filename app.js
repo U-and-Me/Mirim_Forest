@@ -158,7 +158,7 @@ app.get('/MirimTMI', function(req, res){
             </script>
         `;
 
-        console.log(html_tmi);
+        //console.log(html_tmi);
 
         res.send(html_tmi);
 
@@ -198,7 +198,7 @@ router.route('/process/tmisend').post(function(req, res){
         if(err) throw err;
     });
 
-    res.redirect('/MirimTMI/tmi.html');
+    res.redirect('/MirimTMI');
 
 });
 
