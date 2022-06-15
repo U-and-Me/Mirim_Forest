@@ -18,13 +18,13 @@ function ShowImage(){
         case 10: 
         case 9: image += 'stu_100%25.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
         case 8: 
-        case 7: image += 'stu_80%25.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
+        case 7: image += 'stu_80%25.png'; result_description = '미림화가 많이 이루어진 시기일까요? 후훗'; break;
         case 6: 
-        case 5: image += 'stu_60%25.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
+        case 5: image += 'stu_60%25.png'; result_description = '프로젝트 때문에 많이 힘들죠.. 화이팅!'; break;
         case 4: 
-        case 3: image += 'stu_40%25.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
+        case 3: image += 'stu_40%25.png'; result_description = '삐약삐약, 병아리를 이제 막 벗어났군요..'; break;
         case 2: 
-        case 1: image += 'stu_20%25.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
+        case 1: image += 'stu_20%25.png'; result_description = '엇! 외부에서 오신 손님인가요??'; break;
         case 0: image += 'stu_0%25.png'; result_description = '죄송하지만 혹시... 1학년이신가요?'; break;
     }
 
