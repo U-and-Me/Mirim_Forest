@@ -14,7 +14,17 @@
         </div>
 
         <a href="MirimTest/MirimTest.html"><img src="image/index_MirimTest.png" id="testbtn"></a>
-        <a href="MirimWriting/writing.html"><img src="image/index_MirimForest.png" id="forestbtn"></a>
-        <a href="MirimTMI/tmi.html"><img src="image/index_MirimTMI.png" id="TMIbtn"></a>
-    </body>    
+        <a onclick="movePage_w()"><img src="image/index_MirimForest.png" id="forestbtn"></a>
+        <a onclick="movePage_t()"><img src="image/index_MirimTMI.png" id="TMIbtn"></a>
+    </body>   
+    <script>
+        function movePage_w(){
+            location.href = "MirimWriting";
+            //location.href = "../MirimWriting/writing.html";
+        }
+        function movePage_t(){
+            location.href = "MirimTMI";
+            //location.href = "../MirimTMI/tmi.html";
+        }
+    </script> 
 </html>
