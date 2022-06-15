@@ -3,7 +3,7 @@
 var mirim_percent = localStorage.getItem('mirim_percent');
 
 let image = "../image/"; // 이미지 경로
-let image_alt = "미림인 테스트"; // 이미지가 나올경우 대체 텍스트
+let image_alt = "%의 미림인"; // 이미지가 나올경우 대체 텍스트
 let result_description = "";    // 캐릭터 설명
 
 ShowImage();
@@ -16,17 +16,19 @@ function ShowImage(){
 
     switch(mirim_percent / 10){
         case 10: 
-        case 9: image += 'stu_100%.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
+        case 9: image += 'stu_100%25.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
         case 8: 
-        case 7: image += 'stu_80%.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
+        case 7: image += 'stu_80%25.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
         case 6: 
-        case 5: image += 'stu_60%.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
+        case 5: image += 'stu_60%25.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
         case 4: 
-        case 3: image += 'stu_40%.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
+        case 3: image += 'stu_40%25.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
         case 2: 
-        case 1: image += 'stu_20%.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
-        case 0: image += 'stu_0%.png'; result_description = '죄송하지만 혹시... 1학년이신가요?'; break;
+        case 1: image += 'stu_20%25.png'; result_description = '완벽한 미림인시네요!!!!!! 이제 떠나셔도 좋습니다'; break;
+        case 0: image += 'stu_0%25.png'; result_description = '죄송하지만 혹시... 1학년이신가요?'; break;
     }
+
+    console.log(image);
 
     // img 태그 추가
     var img = document.createElement('img');
@@ -34,7 +36,8 @@ function ShowImage(){
     img.style.width = '370px';
     img.style.marginTop = '100px';
     img.style.marginLeft = '150px';
-
+    img.alt = mirim_percent + image_alt;
+    console.log(img.src);
     result_bg.appendChild(img);
 
     // 설명 추가
