@@ -11,7 +11,7 @@ ctx.fill();
 ctx.closePath();
 */
 
-
+/*
 var temp;
 
 function title_txtbox() {
@@ -29,4 +29,6 @@ var inputText=function(){
     //document.querySelector("#one").value="";
     document.querySelector("#nick").focus();
 };
+
+*/
 
