@@ -49,7 +49,13 @@ app.get('/', (req, res) => {
 var $;
 var html_write;
 var html_reset;
-request('http://localhost:3000/MirimWriting/writing.html', function(error, response, html){
+
+
+app.get('/MirimWriting', function(req, res){
+    console.log("이어서 글짓기");
+    //res.sendFile(__dirname + '/MirimWriting/writing.html');
+
+    request('http://localhost:3000/MirimWriting/writing.html', function(error, response, html){
             if(error) {throw error};
 
             $ = cheerio.load(html);
@@ -63,11 +69,7 @@ request('http://localhost:3000/MirimWriting/writing.html', function(error, respo
             `;
 
             html_reset = html_write;
-})
-
-app.get('/MirimWriting', function(req, res){
-    console.log("이어서 글짓기");
-    //res.sendFile(__dirname + '/MirimWriting/writing.html');
+    })
     
     // DB 글 가져오기
     var sql = 'SELECT * FROM WRITING';
@@ -75,7 +77,6 @@ app.get('/MirimWriting', function(req, res){
     var i = 0;
 
     conn.query(sql, function(err, results, field){
-       //console.log(results[i].user_write);
 
         write = results;
     });
@@ -102,24 +103,67 @@ app.get('/MirimWriting', function(req, res){
     }, 500);
 });
 
+var $2;
+var html_tmi;
+var html_tmi_reset;
+
 app.get('/MirimTMI', function(req, res){
     console.log("오늘 나의 TMi");
-    res.sendFile(__dirname + '/MirimTMI/tmi.html');
+    //res.sendFile(__dirname + '/MirimTMI/tmi.html');
+
+    request('http://localhost:3000/MirimTMI/tmi.html', function(error, response, html){
+            if(error) {throw error};
+
+            $2 = cheerio.load(html);
+
+            html_tmi =$2.html();
+            html_tmi += `
+            <script>
+                var tmiView = document.querySelector("#tmiView");
+            `;
+
+            html_tmi_reset = html_tmi;
+    })
 
     // DB 글 가져오기
     var sql = 'SELECT * FROM tmi';
+    var tmi = {};
     var i = 0;
 
     conn.query(sql, function(err, results, field){
         // console.log(results[i].title);
         // console.log(results[i].content);
         // console.log(results[i].nickname);
-        var title = results[i].title;
-        var content= results[i].content;
-        var nickname = results[i].nickname;
-
-      i++;
+        tmi = results;
     });    
+
+    setTimeout(function(){
+        //console.log(write);
+
+        while(i < tmi.length){
+            var title = tmi[i].title;
+            var content = tmi[i].content;
+            var nickname = tmi[i].nickname;
+
+            html_tmi += `
+            tmiView.innerHTML += '<span style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${title}</span >';    
+            tmiView.innerHTML += '<span  style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${content}</span >';    
+            tmiView.innerHTML += '<span  style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${nickname}</span >';     
+            `;
+
+            i++;
+        }
+
+        html_tmi += `
+            </script>
+        `;
+
+        console.log(html_tmi);
+
+        res.send(html_tmi);
+
+        html_tmi = html_tmi_reset;
+    }, 500);
     
 });
 
