@@ -128,7 +128,7 @@ function ShowQuestion(){
     var ans_right = document.querySelector("#ans_right");
 
     // 질문
-    qus_span.innerHTML = '<span style="width:auto; height:auto; font-size:70px; font-weight:bold;">Q'+(cur_ind+1)+'. </br>'+question[qus_arr[cur_ind]]+'</span>';
+    qus_span.innerHTML = '<span style="width:auto; height:auto; font-size:70px; font-weight:bold;">Q'+(cur_ind+1)+'. </br></br>'+question[qus_arr[cur_ind]]+'</span>';
         
     random_quiz = Math.floor((Math.random() * 2));
 
