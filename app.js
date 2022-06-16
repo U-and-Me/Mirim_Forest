@@ -23,6 +23,9 @@ app.use(express.static(__dirname + '/'));
 app.use('/MirimWriting', static(path.join(__dirname, '/MirimWriting')));
 app.use('/MirimTMI', static(path.join(__dirname, 'MirimTMI')));
 
+// 필터링
+var filtering = require('./.filter');
+
 // mysql 접속 설정
 const conn = mysql.createConnection({
     host : db_config.host,
@@ -86,6 +89,11 @@ app.get('/MirimWriting', function(req, res){
         while(i < write.length){
         html_write += `
          chatView.innerHTML += '<div style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${write[i].user_write}</div>';    
+
+         chatView.scrollBy(0, chatView.scrollHeight);
+         
+         var message = document.getElementById('msg').value; 
+         msg.value='';
         `;
 
         i++;
@@ -145,16 +153,20 @@ app.get('/MirimTMI', function(req, res){
             var content = tmi[i].content;
             var nickname = tmi[i].nickname;
 
-            html_tmi += `
-            tmiView.innerHTML += '<span style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${title}</span >';    
-            tmiView.innerHTML += '<span  style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${content}</span >';    
-            tmiView.innerHTML += '<span  style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${nickname}</span >';     
+            html_tmi += 
+            `
+                tmiView.innerHTML += '<span style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${title}</span>';    
+                tmiView.innerHTML += '<span style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${content}</span>';    
+                tmiView.innerHTML += '<span style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${nickname}</span>';    
+                
+                
             `;
 
             i++;
         }
 
-        html_tmi += `
+        html_tmi += 
+        `
             </script>
         `;
 
@@ -171,15 +183,48 @@ app.get('/MirimTMI', function(req, res){
 router.route('/process/send').post(function(req, res){
     console.log('/process/send 호출됨');
 
-    var paramId = req.body.name || req.query.name;
+    var message = req.body.message || req.query.message;
+    var check = true;
+    var ko;
 
-    console.log(paramId);
+    console.log(message);
 
-    // DB에 글 저장
-    var sql = 'INSERT INTO WRITING VALUES("' + paramId + '")';
-    conn.query(sql, function(err, results){
-        if(err) throw err;
-    });
+    // 빈칸 체크
+    check = filtering.filter_func.checkBlank(message);
+    if(check != true){
+        res.send("<script>alert('" + check + "'); history.back();</script>");
+    }
+
+    // 따옴표 제거
+    message = filtering.filter_func.delQuotes(message);
+
+    // 자음/모음 확인
+    ko = filtering.filter_func.warningWord(message); 
+    console.log("kr : " + ko);
+    if(ko !== undefined){
+        res.send("<script>alert('" + ko + "'); history.back();</script>");
+        //check = false;
+    }else{
+
+        // 빈칸 체크
+        check = filtering.filter_func.checkBlank(message);
+        console.log(check);
+
+        // 비속어 필터링
+        var filtering_str = filtering.filter_func.delContent(message);
+        console.log("filter : " + filtering_str);
+
+        if(check){
+            console.log(filtering_str)
+            // DB에 글 저장
+            var sql = 'INSERT INTO WRITING VALUES("' + filtering_str + '")';
+            conn.query(sql, function(err, results){
+                if(err) throw err;
+            });
+
+            res.redirect('/MirimWriting');
+        };
+    }
 });
 
 // TMI 라우팅 함수
@@ -187,18 +232,71 @@ router.route('/process/tmisend').post(function(req, res){
     console.log('/process/tmisend 호출됨');
 
     var paramTitle = req.body.title || req.query.title;
-    var paramContent = req.body.content || req.query.ticontenttle;
+    var paramContent = req.body.content || req.query.content;
     var paramNickname = req.body.nickname || req.query.nickname;
+
+    var chk_title;
+    var chk_content;
+    var chk_nickname;
+
+    var ko_title;
+    var ko_content;
+    var ko_nickname;
 
     console.log(paramTitle + "  " + paramContent + "   " + paramNickname);
 
-    // DB에 내용 저장
-    var sql = 'INSERT INTO TMI VALUES("' + paramTitle + '", "' + paramContent + '", "' + paramNickname + '")';
-    conn.query(sql, function(err, results){
-        if(err) throw err;
-    });
+    // 빈칸 경우
+    chk_title = filtering.filter_func.checkBlank(paramTitle);
+    if(chk_title != true){
+        res.send("<script>alert('" + chk_title + "'); history.back();</script>");
+    }
+    chk_content = filtering.filter_func.checkBlank(paramContent);
+    if(chk_content != true){
+        res.send("<script>alert('" + chk_content + "'); history.back();</script>");
+    }
+    chk_nickname = filtering.filter_func.checkBlank(paramNickname);
+    if(chk_nickname != true){
+        res.send("<script>alert('" + chk_nickname + "'); history.back();</script>");
+    }
 
-    res.redirect('/MirimTMI');
+    // 따옴표 제거
+    paramTitle = filtering.filter_func.delQuotes(paramTitle);
+    paramContent = filtering.filter_func.delQuotes(paramContent);
+    paramNickname = filtering.filter_func.delQuotes(paramNickname);
+
+    // 자음/모음 확인
+    ko_title = filtering.filter_func.warningWord(paramTitle);
+    ko_content = filtering.filter_func.warningWord(paramContent);
+    ko_nickname = filtering.filter_func.warningWord(paramNickname);
+
+    if(ko_title === undefined && ko_content === undefined && ko_nickname == undefined){
+        // 빈칸 체크
+        chk_title = filtering.filter_func.checkBlank(paramTitle);
+        chk_content = filtering.filter_func.checkBlank(paramContent);
+        chk_nickname = filtering.filter_func.checkBlank(paramNickname);
+
+        if(chk_title != true || chk_content != true || chk_nickname != true){
+            res.send("<script>alert('내용을 입력해주세요'); history.back();</script>");
+        }else{
+
+            // 비속어 필터링
+            var filtering_title = filtering.filter_func.delContent(paramTitle);
+            var filtering_content = filtering.filter_func.delContent(paramContent);
+            var filtering_nickname = filtering.filter_func.delContent(paramNickname);
+
+            // DB에 내용 저장
+            var sql = 'INSERT INTO TMI VALUES("' + filtering_title + '", "' + filtering_content + '", "' + filtering_nickname + '")';
+            conn.query(sql, function(err, results){
+                if(err) throw err;
+            });
+
+            res.redirect('/MirimTMI');            
+        }
+    }else{
+        res.send("<script>alert('제목 : " + ko_title + "'); history.back();</script>");
+        res.send("<script>alert('내용 : " + ko_content + "'); history.back();</script>");
+        res.send("<script>alert('닉네임 : " + ko_nickname + "'); history.back();</script>");
+    }   
 
 });
 
