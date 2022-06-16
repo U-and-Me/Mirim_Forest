@@ -42,6 +42,14 @@ body {
 }
 */
 
+/*
+#mirimtest_bg{
+    background-repeat : no-repeat;
+    width: 2050px;
+    height: 754px;
+    background-image: url('../image/MirimTest_testbar.png');
+}
+*/
 
 #test_bg{
     position: relative;
@@ -49,17 +57,17 @@ body {
     background-repeat : no-repeat;
     width: 2050px;
     height: 754px;
-
+    padding-left: 40px;
     margin-left: 440px;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 
 
 #question{
     position: absolute;
-    margin-left: 70px;
-    margin-top: 90px;
+    margin-left: 80px;
+    margin-top: 100px;
 }
 
 
