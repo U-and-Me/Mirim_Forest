@@ -4,27 +4,14 @@
         <meta charset="utf-8">
         <title>미림숲🌳</title>
         <link rel="stylesheet" type="text/css" href="./index.css"/>
-        <!--<script src="./index_db.js" defer></script> -->
     </head>
-    <body style="overflow:hidden;">
-        <div id="bar" >
-            <img src="image/index_logo.png" id="logo">
-            <span id="manager">@관리자 - 김유나, 김유진</span> <br>
-           <!-- <a href="MirimPost/guestbook.html"><img src="image/index_message.png" id="mgbtn"></a>-->
-        </div>
-
-        <a href="MirimTest/MirimTest.html"><img src="image/index_MirimTest.png" id="testbtn"></a>
-        <a onclick="movePage_w()"><img src="image/index_MirimForest.png" id="forestbtn"></a>
-        <a onclick="movePage_t()"><img src="image/index_MirimTMI.png" id="TMIbtn"></a>
-    </body>   
+    <body>
+        <img id="back_logo" src="image/index_newlogo.png">
+        <div id="start"><a id="link" onclick="movePage_c()">여기를 눌러주세요</a></div>
+    </body>
     <script>
-        function movePage_w(){
-            location.href = "MirimWriting";
-            //location.href = "../MirimWriting/writing.html";
+        function movePage_c(){
+            location.href = "contents";
         }
-        function movePage_t(){
-            location.href = "MirimTMI";
-            //location.href = "../MirimTMI/tmi.html";
-        }
-    </script> 
+    </script>
 </html>

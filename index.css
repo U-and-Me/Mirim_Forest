@@ -1,59 +1,40 @@
 body {
     margin: 0%;
 
-    height: 100vh;
-    background-image: url('image/index_bg.png');
+    height: auto;
+    background-image: url('image/background_new.jpg');
     background-repeat : no-repeat;
     background-size : cover;
 
+    overflow-y: hidden;
+    overflow-x: hidden;
+
 }
 
-#bar{
-    background-image: url('image/index_titlebar.png');
+#back_logo{
+    width: 42%;
+
+    margin-top: 7%;
+    margin-left: 29%;
+}
+
+#start{
     
+    font-size: 230%;
+    font-family: 'Happiness-Sans-Title';
+    color: white;
 
-    height: 130px;
-    width: 100%;
+    margin-left: 1110px;
+    margin-top: 400px;
 }
 
-#logo{
-    margin-top: 13px;
-    margin-left: 7px;
+#link{
+    text-decoration: none;
 }
 
-#manager{
-    float: right;
-
-    margin-top: 8px;
-    margin-right: 20px;
-}
-
-#mgbtn{
-    float: right;
-
-    margin-top: -45px;
-    margin-right: 25px;
-}
-
-#testbtn{
-    height: 40%;
-    width: 20%;
-    margin-top: 140px;
-    margin-left: 200px;
-}
-
-#forestbtn{
-    float: right;
-    height: 40%;
-    width: 20%;
-    margin-top: 140px;
-    margin-right: 1000px;
-}
-
-#TMIbtn{
-    float: right;
-    height: 40%;
-    width: 20%;
-    margin-top: -530px;
-    margin-right: 220px;
+@font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
