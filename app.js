@@ -155,9 +155,13 @@ app.get('/MirimTMI', function(req, res){
 
             html_tmi += 
             `
-                tmiView.innerHTML += '<span style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${title}<br></span>';    
-                tmiView.innerHTML += '<span style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${content}<br></span>';    
-                tmiView.innerHTML += '<span style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${nickname}<br><br></span>';    
+                tmiView.innerHTML += '<div id="tmitest" style="margin-left:5%; width:auto; height: auto; background-color:#2A671C" > </div>';
+
+                var tmitest = document.getElementById('tmitest');
+
+                tmitest.innerHTML += '<span style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${title}<br></span>';    
+                tmitest.innerHTML += '<span style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${content}<br></span>';    
+                tmitest.innerHTML += '<span style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:20px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${nickname}<br><br></span>';    
             `;
 
             i++;
