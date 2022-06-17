@@ -43,7 +43,7 @@ body {
 }
 #chatView {
     width: 100vw;
-    height: 700px;
+    height: 1050px;
     overflow-y: scroll;
 }
 #chatForm {
