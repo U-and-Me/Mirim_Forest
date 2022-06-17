@@ -23,17 +23,20 @@ body{
 
 #tmiView{
     width: 100vw;
-    height: 700px;
+    height: 1000px;
     overflow-y: scroll;
 }
 
 #button1{
-    margin-top: 400px;
+    margin-top: 150px;
     margin-right: 40px;
     float: right;
 }
 
-
+#bottombar{
+    float: right;
+    margin-right: 30px;
+}
 
 /*
 #messagebox{
