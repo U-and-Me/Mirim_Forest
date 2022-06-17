@@ -1,0 +1,28 @@
+body {
+    margin: 0%;
+    background-image: url('../image/newindex_background.png');
+    background-repeat : no-repeat;
+    background-size : cover;
+
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+}
+
+#TMI{
+    position: absolute;
+    margin-top: 400px;
+    margin-left: 1700px;
+}
+
+#Write{
+    position: absolute;
+    margin-top: 80px;
+    margin-left: 1000px;
+}
+
+#Test{
+    position: absolute;
+    margin-top: 420px;
+    margin-left: 200px;
+}

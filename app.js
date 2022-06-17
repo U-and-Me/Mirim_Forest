@@ -20,8 +20,10 @@ app.use(bodyParser.json());
 app.set('port', process.env.PORT || 3000);
 
 app.use(express.static(__dirname + '/'));
+app.use('/contents', static(path.join(__dirname, '/contents')));
 app.use('/MirimWriting', static(path.join(__dirname, '/MirimWriting')));
 app.use('/MirimTMI', static(path.join(__dirname, 'MirimTMI')));
+app.use('/MirimTest', static(path.join(__dirname, '/MirimTest')));
 
 // 필터링
 var filtering = require('./.filter');
@@ -47,6 +49,14 @@ conn.connect((err) => {
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + 'index.html');
+});
+
+app.get('/contents', function(req, res){
+    res.sendFile(__dirname + '/contents/content.html');
+});
+
+app.get('/MirimTest', function(req, res){
+    res.sendFile(__dirname + '/MirimTest/MirimTest.html');
 });
 
 var $;
