@@ -11,7 +11,7 @@ body {
 
 #pos_bar{
     margin-top: 150px;
-    margin-left: 740px; /*바*/
+    margin-left: 870px; /*바*/
     position: relative;
 }
 
@@ -19,7 +19,7 @@ body {
     position: absolute;
 
     margin-top: -30px;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
 #closebtn{
