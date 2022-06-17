@@ -1,0 +1,45 @@
+body {
+    margin: 0%;
+
+    height: auto;
+    background-image: url('image/background_new.jpg');
+    background-repeat : no-repeat;
+    background-size : cover;
+
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+}
+
+#back_logo{
+    width: 42%;
+
+    margin-top: 7%;
+    margin-left: 29%;
+}
+
+#start{
+    
+    font-size: 230%;
+    font-family: 'Happiness-Sans-Title';
+    color: white;
+
+    margin-left: 1110px;
+    margin-top: 400px;
+}
+
+#link{
+    text-decoration: none;
+}
+
+a:visited{
+    text-decoration: none;
+    color: white;
+}
+
+@font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
