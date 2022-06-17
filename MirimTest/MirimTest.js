@@ -113,6 +113,7 @@ function Test(){
             CurPosition();
        ShowQuestion();
     }else{ // 테스트가 끝났을 경우 결과 화면으로 이동
+        mirim_percent = mirim_percent/20*100;
         localStorage.setItem("mirim_percent", mirim_percent);
         var link = 'ResultTest.html';
         location.href = link;
@@ -146,15 +147,11 @@ function ShowQuestion(){
 function chkAnswer(user_ans){
     if(random_quiz % 2 == 0){
         if(user_ans == 1){ // 정답
-            mirim_percent += 5;
-        }else{ // 오답
-            mirim_percent -= 5;
+            mirim_percent++;
         }
     }else{
         if(user_ans == 2){ // 정답
-            mirim_percent += 5;
-        }else{ // 오답
-            mirim_percent -= 5;
+            mirim_percent++;
         }
     }
 
