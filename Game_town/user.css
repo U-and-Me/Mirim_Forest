@@ -1,7 +1,40 @@
+body{
+    background-color: aquamarine;
+}
+
+#user{
+    margin-top: 200px;
+    margin-left: 300px;
+}
+
+#txt_title{
+    border: 1px solid #707070;
+    border-radius: 10px;
+    height: 40px;
+    width: 400px;
+    font-size: 16pt; /*폰트 크기*/
+    text-align: left; /*텍스트 위치*/
+    color: black;
+    padding: 4px; /*안쪽 여백*/
+    box-sizing: border-box;
+}
+
+#txt_name{
+    border: 1px solid #707070;
+    border-radius: 10px;
+    height: 40px;
+    width: 400px;
+    font-size: 16pt; /*폰트 크기*/
+    text-align: left; /*텍스트 위치*/
+    color: black;
+    padding: 4px; /*안쪽 여백*/
+    box-sizing: border-box;
+}
+
 #gameStartBtn{
     float: right;
-    margin-top: 500px;
-    margin-right: 300px;
-    height: 50px;
-    width: 50vw;
+    margin-top: 200px;
+    margin-right: 400px;
+    height: 20px;
+    width: 20px;
 }
