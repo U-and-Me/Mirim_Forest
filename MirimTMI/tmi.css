@@ -1,8 +1,7 @@
 body{
     margin: 0%;
     height: 100vh;
-    /*background-image: url('../image/tmi_bg.png');*/
-    background-color: #2A671C;
+    background-image: url('../image/MirimTMI_bg.png');
     background-repeat : no-repeat;
     background-size : cover;
 }
@@ -37,6 +36,14 @@ body{
     float: right;
     margin-right: 30px;
 }
+
+
+#bottom{
+    height: 20px;
+    width: auto;
+    background-color: aliceblue;
+}
+
 
 /*
 #messagebox{
