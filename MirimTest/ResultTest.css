@@ -13,7 +13,7 @@ body {
 #txt1{
     float: right;
 
-    margin-top: -900px;
+    margin-top: -1100px;
     margin-right: 170px;
     
     font-weight: bold;
@@ -23,20 +23,20 @@ body {
 #post{
     float: right;
 
-    margin-top: -840px;
+    margin-top: -1040px;
     margin-right: 7px;
 }
 
 #homebtn{
     float: right;
 
-    margin-top: -380px;
+    margin-top: -500px;
     margin-right: 145px;
 }
 
 #msgbtn{
     float: right;
 
-    margin-top: -130px;
+    margin-top: -280px;
     margin-right: 60px;
 }

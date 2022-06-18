@@ -98,12 +98,12 @@ app.get('/MirimWriting', function(req, res){
 
         while(i < write.length){
         html_write += `
-         chatView.innerHTML += '<div style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${write[i].user_write}</div>';    
-
-         chatView.scrollBy(0, chatView.scrollHeight);
-         
-         var message = document.getElementById('msg').value; 
-         msg.value='';
+            chatView.innerHTML += '<div style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${write[i].user_write}</div>';    
+            
+            chatView.scrollBy(0, chatView.scrollHeight);
+            
+            var message = document.getElementById('msg').value; 
+            msg.value='';
         `;
 
         i++;
@@ -165,13 +165,14 @@ app.get('/MirimTMI', function(req, res){
 
             html_tmi += 
             `
-                tmiView.innerHTML += '<span style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${title}</span>';    
-                tmiView.innerHTML += '<span style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${content}</span>';    
-                tmiView.innerHTML += '<span style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${nickname}</span>';    
-                
-                
-            `;
+                tmiView.innerHTML += '<div id="tmitest" style="margin-left:5%; width:auto; height: auto; background-color:#2A671C" > </div>';
 
+                var tmitest = document.getElementById('tmitest');
+
+                tmitest.innerHTML += '<span style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${title}<br></span>';    
+                tmitest.innerHTML += '<span style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${content}<br></span>';    
+                tmitest.innerHTML += '<span style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:20px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${"TMI 작성자 : " + nickname}<br><br></span>';    
+            `;
             i++;
         }
 

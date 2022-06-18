@@ -1,8 +1,7 @@
 body{
     margin: 0%;
     height: 100vh;
-    /*background-image: url('../image/tmi_bg.png');*/
-    background-color: #2A671C;
+    background-image: url('../image/MirimTMI_bg.png');
     background-repeat : no-repeat;
     background-size : cover;
 }
@@ -23,16 +22,27 @@ body{
 
 #tmiView{
     width: 100vw;
-    height: 700px;
+    height: 1000px;
     overflow-y: scroll;
 }
 
 #button1{
-    margin-top: 60px;
-    margin-right: 3px;
+    margin-top: 150px;
+    margin-right: 40px;
     float: right;
 }
 
+#bottombar{
+    float: right;
+    margin-right: 30px;
+}
+
+
+#bottom{
+    height: 20px;
+    width: auto;
+    background-color: aliceblue;
+}
 
 
 /*

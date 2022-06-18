@@ -43,7 +43,7 @@ body {
 }
 #chatView {
     width: 100vw;
-    height: 700px;
+    height: 1050px;
     overflow-y: scroll;
 }
 #chatForm {
@@ -59,11 +59,18 @@ body {
     font-size: 25px;
 }
 #send {
-    width: 16%;
+    background-image: url('../image/MirimWriting_btn.png');
+    background-color: #D3FFAC;
+    color: rgb(16, 186, 0);
+    border: none;
+    width: 385px;
+    height: 390px;
+
+    /*width: 16%;
     height: 84px;
     border-radius: 50px;
     background: black;
-    color: white;
+    color: white;*/
 
 
     margin-left: 25px;
