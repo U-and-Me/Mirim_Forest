@@ -4,8 +4,7 @@
     <head>
         <meta charset="utf-8">
         <title>게임 마을</title>
-        <link rel="stylesheet" type="text/css" href="town.css"/>
-        <script type="text/javascript" src="town.js" defer></script>
+        <link rel="stylesheet" type="text/css" href="miniGame.css"/>
     </head>
     <body>
         <div id="gameStartBtn">
@@ -13,5 +12,10 @@
                 <img src="../image/mushroom.png" id="close">
             </a>
         </div>
+        <!-- 완료 버튼 누르면 app.js에서 확인해서 페이지 이동할 예정-->
+        <!-- 정답은 버튼이 아니라 사용자가 입력하는 방식으로 만들어주세여-->
+        <form action="/process/submitAnswer" method="post">
+            <input type="submit" value="완료"/>
+        </form>
     </body>
 </html>

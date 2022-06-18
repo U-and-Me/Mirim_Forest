@@ -8,10 +8,19 @@
         <script type="text/javascript" src="user.js" defer></script>
     </head>
     <body>
+        <!-- 사실 이거는 뭔지 잘 모르겟음... -->
         <div id="gameStartBtn">
             <a href="../Game_town/miniGame.js">
                 <img src="../image/mushroom.png" id="close">
             </a>
         </div>
+        <!-- 제출 버튼 누르면 db에 저장하고 타운 페이지로 넘길 예정 -->
+        <!-- 사용자 학번, 닉네임, 질문1, 질문2, 정답 이렇게 입력 받으면 됨
+            빈칸처리, 이상하거는 app.js에서 필터링 할 예정-->
+        <!-- 그리고 각 입력받을 태그에다 name 속성 넣어줘 
+            name 어떻게 정할지 모르겠으면 app.js에서 밑에 액션부분 쪽 찾아서 보면 됨-->
+        <form action="/process/submitInfo" method="post">
+            <input type="submit" value="제출"/>
+        </form>
     </body>
 </html>

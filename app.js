@@ -24,6 +24,9 @@ app.use('/contents', static(path.join(__dirname, '/contents')));
 app.use('/MirimWriting', static(path.join(__dirname, '/MirimWriting')));
 app.use('/MirimTMI', static(path.join(__dirname, 'MirimTMI')));
 app.use('/MirimTest', static(path.join(__dirname, '/MirimTest')));
+app.use('/Game_town', static(path.join(__dirname, '/Game_town')));
+app.use('/MiniGame', static(path.join(__dirname, '/Game_town')));
+app.use('/AddUser', static(path.join(__dirname, '/Game_town')));
 
 // 필터링
 var filtering = require('./.filter');
@@ -59,10 +62,17 @@ app.get('/MirimTest', function(req, res){
     res.sendFile(__dirname + '/MirimTest/MirimTest.html');
 });
 
+app.get('/Game_town', function(req, res){
+    res.sendFile(__dirname + '/Game_town/town.html');
+});
+
+app.get('/AddUser', function(req, res){
+    res.sendFile(__dirname + '/Game_town/user.html');
+});
+
 var $;
 var html_write;
 var html_reset;
-
 
 app.get('/MirimWriting', function(req, res){
     console.log("이어서 글짓기");
@@ -190,6 +200,49 @@ app.get('/MirimTMI', function(req, res){
     
 });
 
+var q1, q2, answer;
+app.get('/MiniGame', function(req, res){
+
+    var game_html;    
+
+    // 페이지 읽어서 문제 보여주기
+    request('http://localhost:3000/Game_town/miniGame.html', function(error, response, html){
+        if(error) {throw error};
+
+        $ = cheerio.load(html);
+
+        game_html = $.html();
+        game_html += `
+        <script>
+            
+        `;
+    });
+
+    var sql = 'SELECT * FROM example_game order by rand() limit 1';
+
+    conn.query(sql, function(err, results, field){
+        console.log(results);
+        q1 = results[0].question_1;
+        q2 = results[0].question_2;
+        answer = results[0].answer;
+    });    
+    
+    setTimeout(function(){
+
+        // 문제 추가
+        game_html += `
+            
+        `;
+        game_html += `
+            </script>
+        `;
+
+        res.send(game_html);
+    }, 500);
+
+    //res.sendFile(__dirname + '/Game_town/miniGame.html');
+});
+
 // 글쓰기 라우팅 함수
 router.route('/process/send').post(function(req, res){
     console.log('/process/send 호출됨');
@@ -312,6 +365,33 @@ router.route('/process/tmisend').post(function(req, res){
         res.send("<script>alert('닉네임 : " + ko_nickname + "'); history.back();</script>");
     }   
 
+});
+
+// 미니 게임
+router.route('/process/submitAnswer').post(function(req, res){
+    
+    // 정답이 맞는지 확인 후 유저 저장하기
+    // 아닐 경우 타운으로 이동
+
+
+    res.redirect('/AddUser');
+});
+
+router.route('/process/submitInfo').post(function(req, res){
+
+    // 순서대로 학번, 닉네임, 질문1, 질문2, 정답
+    var user_id = req.body.user_id || req.query.user_id;
+    var nickname = req.body.nickname || req.query.nickname;
+    var q1 = req.body.q1 || req.query.q1;
+    var q2 = req.body.q2 || req.query.q2;
+    var answer = req.body.answer || res.query.answer;
+
+    var sql = 'INSERT INTO townGame VALUES("' + user_id + '", "' + nickname + '", "' + q1 + '", "' + q1 + '", "' + answer + '")';
+        conn.query(sql, function(err, results){
+        if(err) throw err;
+    });
+
+    res.sendFile('/Game_town');
 });
 
 app.use('/', router);
