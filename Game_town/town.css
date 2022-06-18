@@ -1,4 +1,13 @@
-#house1{
+#house{
     height: 100px;
     width: 100vw;
+}
+
+#house2{
+    float: right;
+    margin-right: 500px;
+}
+
+#house3{
+    float: right;
 }
