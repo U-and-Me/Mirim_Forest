@@ -1,3 +1,9 @@
+body{
+    margin: 0%;
+
+    overflow: hidden;
+}
+
 #house{
     height: 100px;
     width: 100vw;
