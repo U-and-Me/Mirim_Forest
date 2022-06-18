@@ -219,6 +219,9 @@ router.route('/process/send').post(function(req, res){
 
         // 빈칸 체크
         check = filtering.filter_func.checkBlank(message);
+        if(check != true){
+            res.send("<script>alert('" + check + "'); history.back();</script>");
+        }
         console.log(check);
 
         // 비속어 필터링
