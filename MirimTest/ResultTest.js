@@ -34,8 +34,8 @@ function ShowImage(){
     var img = document.createElement('img');
     img.src = image;
     img.style.width = '370px';
-    img.style.marginTop = '100px';
-    img.style.marginLeft = '150px';
+    img.style.marginTop = '400px';
+    img.style.marginLeft = '450px';
     img.alt = mirim_percent + image_alt;
     console.log(img.src);
     result_bg.appendChild(img);
@@ -44,7 +44,7 @@ function ShowImage(){
     var span = document.createElement('span');
     span.textContent = mirim_percent + '%의 미림인';
     span.style.position = 'absolute';
-    span.style.marginLeft = '250px';
+    span.style.marginLeft = '-370px'; // 글씨 위치
     span.style.marginTop = '200px';
 
     // 폰트 설정
@@ -59,8 +59,8 @@ function ShowImage(){
     span_des.textContent = result_description;
     span_des.style.position = 'absolute';
     
-    span_des.style.marginLeft = '7%';
-    span_des.style.marginTop = '320px';
+    span_des.style.marginLeft = '-18%'; // 글씨 위치
+    span_des.style.marginTop = '300px';
 
     // 폰트 설정
     span_des.style.fontSize = '30px';
