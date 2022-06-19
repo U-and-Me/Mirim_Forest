@@ -5,3 +5,20 @@ body{
     margin: 0%;
     overflow: hidden;
 }
+
+#answer{
+    margin-top: 300px;
+    margin-left: 500px;
+}
+
+#txt_answer{
+    border: 1px solid #707070;
+    border-radius: 10px;
+    height: 50px;
+    width: 420px;
+    font-size: 16pt; /*폰트 크기*/
+    text-align: left; /*텍스트 위치*/
+    color: black;
+    padding: 4px; /*안쪽 여백*/
+    box-sizing: border-box;
+}
