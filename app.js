@@ -62,10 +62,6 @@ app.get('/MirimTest', function(req, res){
     res.sendFile(__dirname + '/MirimTest/MirimTest.html');
 });
 
-app.get('/Game_town', function(req, res){
-    res.sendFile(__dirname + '/Game_town/town.html');
-});
-
 app.get('/AddUser', function(req, res){
     res.sendFile(__dirname + '/Game_town/user.html');
 });
@@ -200,10 +196,62 @@ app.get('/MirimTMI', function(req, res){
     
 });
 
-var q1, q2, answer;
+var town_html;
+var nickname;
+var town_index = 0;
+app.get('/Game_town', function(req, res){
+
+    // 집주인 있을 경우 닉네임 보여주기
+    request('http://localhost:3000/Game_town/town.html', function(error, response, html){
+        if(error) {throw error};
+
+        $ = cheerio.load(html);
+
+        town_html = $.html();
+        town_html += `
+        <script>
+            var houses = [];
+            for(let i = 1; i < 6; i++){
+                var house = 'house' + i.toString();
+                houses[i-1] = document.getElementById(house);
+            }
+        `;
+    });   
+
+    var sql = 'SELECT nickname FROM townGame';
+
+    conn.query(sql, function(err, results, field){
+        console.log(results);
+        nickname = results;
+    });    
+
+    // 현재 집을 갖고 있는 사람의 닉네임 보여주기
+    setTimeout(function(){
+
+        town_html += `
+            for(let i = 0; i < 5; i++){
+                if(${nickname[town_index]} !== undefined){
+                    houses[i].innerHTML += '<span  style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${nickname[town_index]}</span>';
+                }else{
+                    houses[i].innerHTML += '<span  style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">주인없음</span>';
+                }
+                
+                ${town_index++};
+            }
+        `;
+        town_html += `
+            </script>
+        `;
+
+        res.send(town_html);
+    }, 500);
+});
+
+var q1, q2, q_ans;
 app.get('/MiniGame', function(req, res){
 
-    var game_html;    
+    var game_html;
+    var select_house;    
 
     // 페이지 읽어서 문제 보여주기
     request('http://localhost:3000/Game_town/miniGame.html', function(error, response, html){
@@ -214,24 +262,31 @@ app.get('/MiniGame', function(req, res){
         game_html = $.html();
         game_html += `
         <script>
-            
+            var test = document.getElementById('test_bg');
+            ${select_house} = localStorge.getItem('house');
         `;
     });
 
-    var sql = 'SELECT * FROM example_game order by rand() limit 1';
+    var sql;
+    // 주인이 있는 집인지 아닌지 확인
+    if(select_house !== undefined){
+        sql = 'SELECT q1, q2, answer FROM townGame where house="' + select_house + '"';
+    }else{
+        sql = 'SELECT * FROM example_game order by rand() limit 1';
+    }
 
     conn.query(sql, function(err, results, field){
         console.log(results);
         q1 = results[0].question_1;
         q2 = results[0].question_2;
-        answer = results[0].answer;
+        q_ans = results[0].answer;
     });    
     
     setTimeout(function(){
 
         // 문제 추가
         game_html += `
-            
+            test.innerHTML += '<span style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${q1} VS ${q2}</span>';
         `;
         game_html += `
             </script>
@@ -240,7 +295,6 @@ app.get('/MiniGame', function(req, res){
         res.send(game_html);
     }, 500);
 
-    //res.sendFile(__dirname + '/Game_town/miniGame.html');
 });
 
 // 글쓰기 라우팅 함수
@@ -372,9 +426,14 @@ router.route('/process/submitAnswer').post(function(req, res){
     
     // 정답이 맞는지 확인 후 유저 저장하기
     // 아닐 경우 타운으로 이동
+    var user_answer = req.body.answer || req.query.answer;
 
-
-    res.redirect('/AddUser');
+    // 맞았을 경우
+    if(user_answer == q_ans){
+        res.redirect('/AddUser');
+    }else{
+        res.redirect('./Game_town');
+    }
 });
 
 router.route('/process/submitInfo').post(function(req, res){
@@ -386,12 +445,12 @@ router.route('/process/submitInfo').post(function(req, res){
     var q2 = req.body.q2 || req.query.q2;
     var answer = req.body.answer || res.query.answer;
 
-    var sql = 'INSERT INTO townGame VALUES("' + user_id + '", "' + nickname + '", "' + q1 + '", "' + q1 + '", "' + answer + '")';
+    var sql = 'INSERT INTO townGame VALUES("' + user_id + '", "' + nickname + '", "' + q1 + '", "' + q2 + '", "' + answer + '")';
         conn.query(sql, function(err, results){
         if(err) throw err;
     });
 
-    res.sendFile('/Game_town');
+    res.redirect('/Game_town');
 });
 
 app.use('/', router);
