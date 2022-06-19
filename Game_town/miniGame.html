@@ -14,13 +14,10 @@
         </div>
         <div id="test_bg"></div>
         <div id="answer">
-                <input type="text" id="txt_answer" name="answer" placeholder="답을 입력해주세요">
-                <form action="/process/submitAnswer" method="post">
-                    <input type="submit" value=" " id="btn" />
-                </form>
+            <form action="/process/submitAnswer" method="post">
+                <input type="text" id="txt_answer" name="txt_answer" placeholder="답을 입력해주세요">
+                <input type="submit" value="완료" id="btn"/>
+            </form>
         </div>
-        <!-- 완료 버튼 누르면 app.js에서 확인해서 페이지 이동할 예정-->
-        <!-- 정답은 버튼이 아니라 사용자가 입력하는 방식으로 만들어주세여-->
-        
     </body>
 </html>
