@@ -5,17 +5,22 @@
         <meta charset="utf-8">
         <title>게임 마을</title>
         <link rel="stylesheet" type="text/css" href="miniGame.css"/>
+        <script type="text/javascript" src="miniGame.js" defer></script>
     </head>
     <body>
-        <div id="gameStartBtn">
-            <a href="../Game_town/miniGame.js">
-                <img src="../image/mushroom.png" id="close">
-            </a>
+        <img src="../image/MirimTest_close.png" id="closebtn" onclick="chkClose()">
+        <div id="character">
+            <img src="../image/Game_town_ch.jpg" id="ch1">
+        </div>
+        <div id="test_bg"></div>
+        <div id="answer">
+                <input type="text" id="txt_answer" name="answer" placeholder="답을 입력해주세요">
+                <form action="/process/submitAnswer" method="post">
+                    <input type="submit" value="완료" id="btn"/>
+                </form>
         </div>
         <!-- 완료 버튼 누르면 app.js에서 확인해서 페이지 이동할 예정-->
         <!-- 정답은 버튼이 아니라 사용자가 입력하는 방식으로 만들어주세여-->
-        <form action="/process/submitAnswer" method="post">
-            <input type="submit" value="완료"/>
-        </form>
+        
     </body>
 </html>
