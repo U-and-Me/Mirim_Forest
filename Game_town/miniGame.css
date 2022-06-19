@@ -7,16 +7,18 @@ body{
     overflow: hidden;
 }
 
+/*노란색 이미지*/
 #answer{
     background-image: url("../image/Game_town_speechBubble.jpg.png");
     background-size : cover;
     background-repeat : no-repeat;
     margin-top: -30px;
-    margin-left: 800px;
+    margin-left: 1000px;
     height: 300px;
     width: 500px;
 }
 
+/* 노란색 : 안에 들어가는 txt*/
 #txt_answer{
     background-color: rgb(254, 237, 159);
     border: 1px solid rgb(254, 237, 159);
@@ -38,8 +40,8 @@ body{
     background-color: black;
     color: #0CC6B8;
     float: left;
-    margin-left: 800px;
-    margin-top: -80px;
+    margin-left: 600px;
+    margin-top: 10px;
     background-size : cover;
     background-repeat : no-repeat;
     
