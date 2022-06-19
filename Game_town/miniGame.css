@@ -2,4 +2,6 @@ body{
     background-image: url('../image/MirimTest_bg.png');
     background-size: 2560px 1440px;
     background-repeat : no-repeat;
+    margin: 0%;
+    overflow: hidden;
 }

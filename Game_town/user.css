@@ -29,6 +29,8 @@ body{
     color: black;
     padding: 4px; /*안쪽 여백*/
     box-sizing: border-box;
+    margin: 0%;
+    overflow: hidden;
 }
 
 #gameStartBtn{
