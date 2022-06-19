@@ -52,6 +52,7 @@ body{
     border-radius: 20px;
     background-color: #FFFAE4;
 }
+/*
 #ansMade{
     color: #0CC6B8;
 }
@@ -70,13 +71,13 @@ body{
     border-radius: 20px;
     background-color: #FFFAE4;
 }
-
+*/
 
 
 
 /*user 정보*/
 #user{
-    margin-top: -300px;
+    margin-top: -330px;
     margin-left: 930px;
 }
 #create_num{
@@ -133,5 +134,5 @@ body{
     background-repeat : no-repeat;
     float: right;
     margin-right: 800px;
-    margin-top: 200px;
+    margin-top: 250px;
 }
