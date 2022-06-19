@@ -17,6 +17,9 @@ body{
     padding-top: 100px;
     padding-left: 130px;
 }
+#queMade1{
+    color: #0CC6B8;
+}
 #txt_queMade1{
     border: 1px solid #707070;
     border-radius: 10px;
@@ -30,6 +33,9 @@ body{
     border: 2px solid #0CC6B8;
     border-radius: 20px;
     background-color: #FFFAE4;
+}
+#queMade2{
+    color: #0CC6B8;
 }
 #txt_queMade2{
     border: 1px solid #707070;
@@ -45,6 +51,9 @@ body{
     border: 2px solid #0CC6B8;
     border-radius: 20px;
     background-color: #FFFAE4;
+}
+#ansMade{
+    color: #0CC6B8;
 }
 #txt_ansMade{
     border: 1px solid #707070;
@@ -70,7 +79,9 @@ body{
     margin-top: -300px;
     margin-left: 930px;
 }
-
+#create_num{
+    color: #0CC6B8;
+}
 #txt_num{
     border: 2px solid #0CC6B8;
     border-radius: 20px;
@@ -85,6 +96,7 @@ body{
     box-sizing: border-box;
 }
 #name{
+    color: #0CC6B8;
     margin-top: -90px;
     margin-left: 400px;
 }
