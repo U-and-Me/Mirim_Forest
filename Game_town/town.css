@@ -1,5 +1,6 @@
 body{
-    background-image: url('../image/MirimTest_bg.png');
+    /*background-image: url('../image/MirimTest_bg.png');*/
+    background-image: url('../image/Game_town_db.jpg');
     background-size: 2560px 1440px;
     background-repeat : no-repeat;
     margin: 0%;
