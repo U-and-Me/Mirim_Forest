@@ -20,6 +20,7 @@ body{
 #txt_answer{
     background-color: rgb(254, 237, 159);
     border: 1px solid rgb(254, 237, 159);
+    
     border-radius: 10px;
     height: 80px;
     width: 420px;
@@ -33,11 +34,18 @@ body{
 }
 
 #btn{
-    float: right;
-    margin-right: 800px;
+    background-image: url("../image/Game_town_txtBtn.png");
+    background-color: black;
+    color: #0CC6B8;
+    float: left;
+    margin-left: 800px;
     margin-top: -80px;
-    height: 80px;
-    width: 150px;
+    background-size : cover;
+    background-repeat : no-repeat;
+    
+    
+    height: 90px;
+    width: 300px;
     font-size: 26pt;
 }
 
@@ -65,3 +73,5 @@ body{
     margin-right: 50px;
     margin-top: 30px;
 }
+
+input:focus {outline: none;}
