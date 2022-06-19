@@ -1,7 +1,59 @@
 body{
-    background-color: aquamarine;
+    background-image: url('../image/Game_town_userbg.jpg');
+    background-size: 2560px 1440px;
+    background-repeat : no-repeat;
+    margin: 0%;
+    overflow: hidden;
 }
 
+/*문제 입력*/
+#que{
+    background-repeat : no-repeat;
+    background-image: url('../image/Game_town_txtBox.png');
+    height: 660px;
+    width: 955px;
+    margin-top: 250px;
+    margin-left: 800px;
+    padding-top: 100px;
+    padding-left: 200px;
+}
+#txt_queMade1{
+    border: 1px solid #707070;
+    border-radius: 10px;
+    height: 40px;
+    width: 400px;
+    font-size: 16pt; 
+    text-align: left; 
+    color: black;
+    box-sizing: border-box;
+}
+#txt_queMade2{
+    border: 1px solid #707070;
+    border-radius: 10px;
+    height: 40px;
+    width: 400px;
+    font-size: 16pt; 
+    text-align: left; 
+    color: black;
+    padding: 4px; 
+    box-sizing: border-box;
+}
+#txt_ansMade{
+    border: 1px solid #707070;
+    border-radius: 10px;
+    height: 40px;
+    width: 400px;
+    font-size: 16pt; 
+    text-align: left; 
+    color: black;
+    padding: 4px; 
+    box-sizing: border-box;
+}
+
+
+
+
+/*user 정보*/
 #user{
     margin-top: 200px;
     margin-left: 300px;
