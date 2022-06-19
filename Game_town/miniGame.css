@@ -55,6 +55,6 @@ body{
 
 #closebtn{
     float: right;
-    margin-top: -280px;
     margin-right: 50px;
+    margin-top: 30px;
 }
