@@ -6,16 +6,31 @@ body{
     overflow: hidden;
 }
 
+/*
 #house{
+    margin-top: 300px;
     height: 100px;
     width: 100vw;
 }
+*/
 
-#house2{
-    float: right;
-    margin-right: 500px;
+#house1{
+    margin-top: 300px;
+    margin-left: 200px;
 }
-
+#house2{
+    margin-top: -200px;
+    margin-left: 1000px;
+}
 #house3{
-    float: right;
+    margin-top: -300px;
+    margin-left: 1700px;
+}
+#house4{
+    margin-top: 300px;
+    margin-left: 500px;
+}
+#house5{
+    margin-top: -450px;
+    margin-left: 1300px;
 }
