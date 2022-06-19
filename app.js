@@ -196,9 +196,11 @@ app.get('/MirimTMI', function(req, res){
     
 });
 
+
+var user_click_house;
+
 var town_html;
-var nickname;
-var town_index = 0;
+var nick_house;
 app.get('/Game_town', function(req, res){
 
     // 집주인 있을 경우 닉네임 보여주기
@@ -218,27 +220,22 @@ app.get('/Game_town', function(req, res){
         `;
     });   
 
-    var sql = 'SELECT nickname FROM townGame';
+    var sql = 'SELECT nickname, house FROM townGame';
 
     conn.query(sql, function(err, results, field){
         console.log(results);
-        nickname = results;
+        nick_house = results;
     });    
 
     // 현재 집을 갖고 있는 사람의 닉네임 보여주기
     setTimeout(function(){
-
-        town_html += `
-            for(let i = 0; i < 5; i++){
-                if(${nickname[town_index]} !== undefined){
-                    houses[i].innerHTML += '<span  style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${nickname[town_index]}</span>';
-                }else{
-                    houses[i].innerHTML += '<span  style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">주인없음</span>';
-                }
-                
-                ${town_index++};
+        for(let i = 0; i < 5; i++){
+            if(nick_house[i].nickname.length == 0){
+                town_html += `houses[${i}].innerHTML += '<span  style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">주인없음</span>';`;
+            }else{
+                town_html += `houses[${1}].innerHTML += '<span  style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${nick_house[i].nickname}</span>';`;
             }
-        `;
+        }
         town_html += `
             </script>
         `;
@@ -248,10 +245,11 @@ app.get('/Game_town', function(req, res){
 });
 
 var q1, q2, q_ans;
+var select_house; 
 app.get('/MiniGame', function(req, res){
-
-    var game_html;
-    var select_house;    
+    
+    select_house = user_click_house;
+    console.log("dddd : " + select_house + "  " + user_click_house);
 
     // 페이지 읽어서 문제 보여주기
     request('http://localhost:3000/Game_town/miniGame.html', function(error, response, html){
@@ -263,14 +261,19 @@ app.get('/MiniGame', function(req, res){
         game_html += `
         <script>
             var test = document.getElementById('test_bg');
-            ${select_house} = localStorge.getItem('house');
         `;
     });
 
     var sql;
+
+    // 선택한 집 정보 가져오기
+    var num = select_house.substring(5);
+    console.log("num " + num);
+
     // 주인이 있는 집인지 아닌지 확인
-    if(select_house !== undefined){
-        sql = 'SELECT q1, q2, answer FROM townGame where house="' + select_house + '"';
+    if(nick_house[num-1].nickname.length != 0){
+        console.log('ddd');
+        sql = 'SELECT question_1, question_2 FROM townGame where house="' + select_house + '"';
     }else{
         sql = 'SELECT * FROM example_game order by rand() limit 1';
     }
@@ -279,7 +282,8 @@ app.get('/MiniGame', function(req, res){
         console.log(results);
         q1 = results[0].question_1;
         q2 = results[0].question_2;
-        q_ans = results[0].answer;
+        q_ans = Math.floor((Math.random() * 2) + 1);
+        console.log(q_ans);
     });    
     
     setTimeout(function(){
@@ -423,34 +427,80 @@ router.route('/process/tmisend').post(function(req, res){
 
 // 미니 게임
 router.route('/process/submitAnswer').post(function(req, res){
+
+    var rand_answer;
+    if(q_ans == 1){
+        rand_answer = q1;
+    }else if(q_ans == 2){
+        rand_answer = q2;
+    }
     
     // 정답이 맞는지 확인 후 유저 저장하기
     // 아닐 경우 타운으로 이동
-    var user_answer = req.body.answer || req.query.answer;
+    var user_answer = req.body.txt_answer || req.query.txt_answer;
 
-    // 맞았을 경우
-    if(user_answer == q_ans){
-        res.redirect('/AddUser');
+    var chk = filtering.filter_func.checkBlank(user_answer);
+    if(chk != true){
+        res.send("<script>alert('" + chk + "'); history.back();</script>");
     }else{
-        res.redirect('./Game_town');
+        // 맞았을 경우
+        if(user_answer == rand_answer){
+            //res.send("<script>alert('정답!! 지금 집을 등록하러 갈까요?'); history.back(); </script>");
+        
+            res.redirect('/AddUser');
+        }else{
+            res.send("<script>alert('틀렸습니다!! 타운으로 이동합니다'); window.close();</script>"); 
+        }
     }
+
 });
 
 router.route('/process/submitInfo').post(function(req, res){
 
     // 순서대로 학번, 닉네임, 질문1, 질문2, 정답
-    var user_id = req.body.user_id || req.query.user_id;
+    var user_id = req.body.num || req.query.num;
     var nickname = req.body.nickname || req.query.nickname;
-    var q1 = req.body.q1 || req.query.q1;
-    var q2 = req.body.q2 || req.query.q2;
-    var answer = req.body.answer || res.query.answer;
+    var q1 = req.body.que1 || req.query.que1;
+    var q2 = req.body.que2 || req.query.que2;
+    var house = select_house
 
-    var sql = 'INSERT INTO townGame VALUES("' + user_id + '", "' + nickname + '", "' + q1 + '", "' + q2 + '", "' + answer + '")';
-        conn.query(sql, function(err, results){
-        if(err) throw err;
-    });
+    var sql = 'UPDATE townGame SET user_id=?, nickname=?, question_1=?, question_2=? where house=?';
+    var params = [user_id, nickname, q1, q2, house];
+    conn.query(sql, params, function(err, results){
+        if(err) console.log(err);
+    })
 
-    res.redirect('/Game_town');
+    res.send("<script>window.close();</script>"); 
+});
+
+router.route('/process/house1').post(function(req, res){
+
+    user_click_house = 'house1';
+
+});
+
+router.route('/process/house2').post(function(req, res){
+
+    user_click_house = 'house2';
+
+});
+
+router.route('/process/house3').post(function(req, res){
+
+    user_click_house = 'house3';
+
+});
+
+router.route('/process/house4').post(function(req, res){
+
+    user_click_house = 'house4';
+
+});
+
+router.route('/process/house5').post(function(req, res){
+
+    user_click_house = 'house5';
+
 });
 
 app.use('/', router);
