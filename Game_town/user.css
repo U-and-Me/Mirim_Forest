@@ -15,67 +15,99 @@ body{
     margin-top: 250px;
     margin-left: 800px;
     padding-top: 100px;
-    padding-left: 200px;
+    padding-left: 130px;
+}
+#queMade1{
+    color: #0CC6B8;
 }
 #txt_queMade1{
     border: 1px solid #707070;
     border-radius: 10px;
-    height: 40px;
-    width: 400px;
+    height: 60px;
+    width: 700px;
     font-size: 16pt; 
     text-align: left; 
     color: black;
     box-sizing: border-box;
+
+    border: 2px solid #0CC6B8;
+    border-radius: 20px;
+    background-color: #FFFAE4;
+}
+#queMade2{
+    color: #0CC6B8;
 }
 #txt_queMade2{
     border: 1px solid #707070;
     border-radius: 10px;
-    height: 40px;
-    width: 400px;
+    height: 60px;
+    width: 700px;
     font-size: 16pt; 
     text-align: left; 
     color: black;
     padding: 4px; 
     box-sizing: border-box;
+
+    border: 2px solid #0CC6B8;
+    border-radius: 20px;
+    background-color: #FFFAE4;
+}
+/*
+#ansMade{
+    color: #0CC6B8;
 }
 #txt_ansMade{
     border: 1px solid #707070;
     border-radius: 10px;
-    height: 40px;
-    width: 400px;
+    height: 60px;
+    width: 700px;
     font-size: 16pt; 
     text-align: left; 
     color: black;
     padding: 4px; 
     box-sizing: border-box;
-}
 
+    border: 2px solid #0CC6B8;
+    border-radius: 20px;
+    background-color: #FFFAE4;
+}
+*/
 
 
 
 /*user 정보*/
 #user{
-    margin-top: 200px;
-    margin-left: 300px;
+    margin-top: -330px;
+    margin-left: 930px;
 }
-
+#create_num{
+    color: #0CC6B8;
+}
 #txt_num{
-    border: 1px solid #707070;
-    border-radius: 10px;
-    height: 40px;
-    width: 400px;
+    border: 2px solid #0CC6B8;
+    border-radius: 20px;
+    background-color: #FFFAE4;
+
+    height: 50px;
+    width: 300px;
     font-size: 16pt; /*폰트 크기*/
     text-align: left; /*텍스트 위치*/
     color: black;
     padding: 4px; /*안쪽 여백*/
     box-sizing: border-box;
 }
-
+#name{
+    color: #0CC6B8;
+    margin-top: -90px;
+    margin-left: 400px;
+}
 #txt_name{
-    border: 1px solid #707070;
-    border-radius: 10px;
-    height: 40px;
-    width: 400px;
+    border: 2px solid #0CC6B8;
+    border-radius: 20px;
+    background-color: #FFFAE4;
+
+    height: 50px;
+    width: 300px;
     font-size: 16pt; /*폰트 크기*/
     text-align: left; /*텍스트 위치*/
     color: black;
@@ -83,6 +115,7 @@ body{
     box-sizing: border-box;
     margin: 0%;
     overflow: hidden;
+    margin-left: 400px;
 }
 
 #gameStartBtn{
@@ -91,4 +124,15 @@ body{
     margin-right: 400px;
     height: 20px;
     width: 20px;
+}
+
+#img_btn{
+    background-image: url("../image/Game_town_txtBtn.png");
+    background-color: #F1F7EB;
+    border: none;
+    background-size : cover;
+    background-repeat : no-repeat;
+    float: right;
+    margin-right: 800px;
+    margin-top: 250px;
 }
