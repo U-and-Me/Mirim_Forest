@@ -68,7 +68,7 @@ body{
 /*user 정보*/
 #user{
     margin-top: -300px;
-    margin-left: 900px;
+    margin-left: 930px;
 }
 
 #txt_num{
@@ -77,21 +77,24 @@ body{
     background-color: #FFFAE4;
 
     height: 50px;
-    width: 200px;
+    width: 300px;
     font-size: 16pt; /*폰트 크기*/
     text-align: left; /*텍스트 위치*/
     color: black;
     padding: 4px; /*안쪽 여백*/
     box-sizing: border-box;
 }
-
+#name{
+    margin-top: -90px;
+    margin-left: 400px;
+}
 #txt_name{
     border: 2px solid #0CC6B8;
     border-radius: 20px;
     background-color: #FFFAE4;
 
     height: 50px;
-    width: 200px;
+    width: 300px;
     font-size: 16pt; /*폰트 크기*/
     text-align: left; /*텍스트 위치*/
     color: black;
@@ -99,6 +102,7 @@ body{
     box-sizing: border-box;
     margin: 0%;
     overflow: hidden;
+    margin-left: 400px;
 }
 
 #gameStartBtn{
@@ -109,6 +113,13 @@ body{
     width: 20px;
 }
 
-#txtBtn{
+#img_btn{
     background-image: url("../image/Game_town_txtBtn.png");
+    background-color: #F1F7EB;
+    border: none;
+    background-size : cover;
+    background-repeat : no-repeat;
+    float: right;
+    margin-right: 800px;
+    margin-top: 200px;
 }
