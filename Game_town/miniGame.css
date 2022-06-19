@@ -8,20 +8,30 @@ body{
 }
 
 #answer{
-    margin-top: 300px;
-    margin-left: 500px;
+    margin-top: 50px;
+    margin-left: 800px;
 }
 
 #txt_answer{
+    background-color: rgb(254, 237, 159);
     border: 1px solid #707070;
     border-radius: 10px;
-    height: 50px;
+    height: 80px;
     width: 420px;
-    font-size: 16pt; /*폰트 크기*/
-    text-align: left; /*텍스트 위치*/
+    font-size: 26pt; /*폰트 크기*/
+    text-align: center; /*텍스트 위치*/
     color: black;
     padding: 4px; /*안쪽 여백*/
     box-sizing: border-box;
+}
+
+#btn{
+    float: right;
+    margin-right: 800px;
+    margin-top: -80px;
+    height: 80px;
+    width: 150px;
+    font-size: 26pt;
 }
 
 #ch1{
