@@ -15,39 +15,51 @@ body{
     margin-top: 250px;
     margin-left: 800px;
     padding-top: 100px;
-    padding-left: 200px;
+    padding-left: 130px;
 }
 #txt_queMade1{
     border: 1px solid #707070;
     border-radius: 10px;
-    height: 40px;
-    width: 400px;
+    height: 60px;
+    width: 700px;
     font-size: 16pt; 
     text-align: left; 
     color: black;
     box-sizing: border-box;
+
+    border: 2px solid #0CC6B8;
+    border-radius: 20px;
+    background-color: #FFFAE4;
 }
 #txt_queMade2{
     border: 1px solid #707070;
     border-radius: 10px;
-    height: 40px;
-    width: 400px;
+    height: 60px;
+    width: 700px;
     font-size: 16pt; 
     text-align: left; 
     color: black;
     padding: 4px; 
     box-sizing: border-box;
+
+    border: 2px solid #0CC6B8;
+    border-radius: 20px;
+    background-color: #FFFAE4;
 }
 #txt_ansMade{
     border: 1px solid #707070;
     border-radius: 10px;
-    height: 40px;
-    width: 400px;
+    height: 60px;
+    width: 700px;
     font-size: 16pt; 
     text-align: left; 
     color: black;
     padding: 4px; 
     box-sizing: border-box;
+
+    border: 2px solid #0CC6B8;
+    border-radius: 20px;
+    background-color: #FFFAE4;
 }
 
 
@@ -55,15 +67,17 @@ body{
 
 /*user 정보*/
 #user{
-    margin-top: 200px;
-    margin-left: 300px;
+    margin-top: -300px;
+    margin-left: 900px;
 }
 
 #txt_num{
-    border: 1px solid #707070;
-    border-radius: 10px;
-    height: 40px;
-    width: 400px;
+    border: 2px solid #0CC6B8;
+    border-radius: 20px;
+    background-color: #FFFAE4;
+
+    height: 50px;
+    width: 200px;
     font-size: 16pt; /*폰트 크기*/
     text-align: left; /*텍스트 위치*/
     color: black;
@@ -72,10 +86,12 @@ body{
 }
 
 #txt_name{
-    border: 1px solid #707070;
-    border-radius: 10px;
-    height: 40px;
-    width: 400px;
+    border: 2px solid #0CC6B8;
+    border-radius: 20px;
+    background-color: #FFFAE4;
+
+    height: 50px;
+    width: 200px;
     font-size: 16pt; /*폰트 크기*/
     text-align: left; /*텍스트 위치*/
     color: black;
@@ -91,4 +107,8 @@ body{
     margin-right: 400px;
     height: 20px;
     width: 20px;
+}
+
+#txtBtn{
+    background-image: url("../image/Game_town_txtBtn.png");
 }
