@@ -1,5 +1,6 @@
 body{
-    background-image: url('../image/MirimTest_bg.png');
+    /*background-image: url('../image/MirimTest_bg.png');*/
+    background-color: black;
     background-size: 2560px 1440px;
     background-repeat : no-repeat;
     margin: 0%;
@@ -21,4 +22,29 @@ body{
     color: black;
     padding: 4px; /*안쪽 여백*/
     box-sizing: border-box;
+}
+
+#ch1{
+    width: 300px;
+    height: 350px;
+    margin-left: 400px;
+    margin-top: 200px;
+}
+
+#test_bg{
+    position: relative;
+    background-image: url('../image/MirimTest_testbar.png');
+    background-repeat : no-repeat;
+    width: 2000px;
+    height: 730px;
+    padding-left: 40px;
+    margin-left: 700px;
+    margin-top: -340px;
+}
+
+
+#closebtn{
+    float: right;
+    margin-top: -280px;
+    margin-right: 50px;
 }
