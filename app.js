@@ -464,13 +464,37 @@ router.route('/process/submitInfo').post(function(req, res){
     var q2 = req.body.que2 || req.query.que2;
     var house = select_house
 
-    var sql = 'UPDATE townGame SET user_id=?, nickname=?, question_1=?, question_2=? where house=?';
-    var params = [user_id, nickname, q1, q2, house];
-    conn.query(sql, params, function(err, results){
-        if(err) console.log(err);
-    })
+    var chk_userid = filtering.filter_func.checkBlank(user_id);
+    var chk_nickname = filtering.filter_func.checkBlank(nickname);
+    var chk_q1 = filtering.filter_func.checkBlank(q1);
+    var chk_q2 = filtering.filter_func.checkBlank(q2);
 
-    res.send("<script>window.close();</script>"); 
+    if(chk_userid == true && chk_nickname == true && chk_q1 == true && chk_q2 == true){
+        // 비속어 필터링
+        if(filtering.filter_func.delContent(user_id).includes("❤") || filtering.filter_func.delContent(nickname).includes("❤") || filtering.filter_func.delContent(q1).includes("❤") || filtering.filter_func.delContent(q2).includes("❤")){
+            res.send("<script>alert('🚨비속어가 감지되었습니다.'); history.back();</script>");
+        }
+
+        chk_userid = filtering.filter_func.checkBlank(user_id);
+        chk_nickname = filtering.filter_func.checkBlank(nickname);
+        chk_q1 = filtering.filter_func.checkBlank(q1);
+        chk_q2 = filtering.filter_func.checkBlank(q2);
+
+        if(chk_userid == true && chk_nickname == true && chk_q1 == true && chk_q2 == true){
+            var sql = 'UPDATE townGame SET user_id=?, nickname=?, question_1=?, question_2=? where house=?';
+            var params = [user_id, nickname, q1, q2, house];
+            conn.query(sql, params, function(err, results){
+                if(err) console.log(err);
+            })
+
+            res.send("<script>window.close();</script>"); 
+        }else{
+            res.send("<script>alert('내용을 작성해주세요'); history.back();</script>");        
+        }
+    }else{
+        res.send("<script>alert('내용을 작성해주세요'); history.back();</script>");        
+    }
+
 });
 
 router.route('/process/house1').post(function(req, res){
