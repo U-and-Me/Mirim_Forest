@@ -13,37 +13,32 @@
         <!-- 페이지는 팝업창으로 새로 띄웠고 '예' 누르면 자동으로 미니 게임으로 넘어감-->
         <div id="houses">
             <div id="house1" onclick="movePage_game(this.id)" name="house1">
-                <form method="post" action="/process/house1">
-                    <input type="submit" id="inputBtn_house1">
-                        <img src="../image/house1.png" id="close">
+                <form method="post" action="/process/house1" id="houseForm">
+                    <input type="submit" id="inputBtn_house1" value="">
                     </input>
                 </form>
             </div>
             <div id="house2" onclick="movePage_game(this.id)">
-                <form method="post" action="/process/house1">
-                    <input type="submit" id="inputBtn_house2">
-                        <img src="../image/house2.png" id="close">
+                <form method="post" action="/process/house2" id="houseForm">
+                    <input type="submit" id="inputBtn_house2" value="">
                     </input>
                 </form>
             </div>
-            <div id="house3" onclick="movePage_game(this.id)">
+            <div id="house3" onclick="movePage_game(this.id)" id="houseForm">
                 <form method="post" action="/process/house3">
-                    <input type="submit" id="inputBtn_house3">
-                        <img src="../image/house3.png" id="close">
+                    <input type="submit" id="inputBtn_house3" value="">
                     </input>  
                 </form>
             </div>
-            <div id="house4" onclick="movePage_game(this.id)">
+            <div id="house4" onclick="movePage_game(this.id)" id="houseForm">
                 <form method="post" action="/process/house4">
-                    <input type="submit" id="inputBtn_house4">
-                        <img src="../image/house4.png" id="close">
+                    <input type="submit" id="inputBtn_house4" value="">
                     </input>  
                 </form>
             </div>
-            <div id="house5" onclick="movePage_game(this.id)">
+            <div id="house5" onclick="movePage_game(this.id)" id="houseForm">
                 <form method="post" action="/process/house5">
-                    <input type="submit" id="inputBtn_house5">
-                        <img src="../image/house5.png" id="close">
+                    <input type="submit" id="inputBtn_house5" value="">
                     </input>  
                 </form>
             </div>
