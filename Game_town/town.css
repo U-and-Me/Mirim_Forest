@@ -13,22 +13,41 @@ body{
     width: 100vw;
 }
 */
-
+#inputBtn_house1{
+    display : none;
+}
 #house1{
+    
     margin-top: 480px;
     margin-left: 260px;
+}
+
+#inputBtn_house2{
+    display : none;
 }
 #house2{
     margin-top: -200px;
     margin-left: 1000px;
 }
+
+#inputBtn_house3{
+    display : none;
+}
 #house3{
     margin-top: -300px;
     margin-left: 1700px;
 }
+
+#inputBtn_house4{
+    display : none;
+}
 #house4{
     margin-top: 200px;
     margin-left: 500px;
+}
+
+#inputBtn_house5{
+    display : none;
 }
 #house5{
     margin-top: -450px;
