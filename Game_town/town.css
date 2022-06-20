@@ -13,17 +13,29 @@ body{
     width: 100vw;
 }
 */
-#inputBtn_house1{
-    display : none;
+
+#houseForm{
+    width: 360px;
+    height: 360px;
 }
-#house1{
-    
+#inputBtn_house1{    
+    background-image: url('../image/house1.png');
+    background-color: transparent;
+    border: none;
+    width: 360px;
+    height: 320px;
+}
+#house1{    
     margin-top: 480px;
     margin-left: 260px;
 }
 
 #inputBtn_house2{
-    display : none;
+    background-image: url('../image/house2.png');
+    background-color: transparent;
+    border: none;
+    width: 305px;
+    height: 270px;
 }
 #house2{
     margin-top: -200px;
@@ -31,7 +43,11 @@ body{
 }
 
 #inputBtn_house3{
-    display : none;
+    background-image: url('../image/house3.png');
+    background-color: transparent;
+    border: none;
+    width: 305px;
+    height: 280px;
 }
 #house3{
     margin-top: -300px;
@@ -39,7 +55,11 @@ body{
 }
 
 #inputBtn_house4{
-    display : none;
+    background-image: url('../image/house4.png');
+    background-color: transparent;
+    border: none;
+    width: 360px;
+    height: 320px;
 }
 #house4{
     margin-top: 200px;
@@ -47,7 +67,11 @@ body{
 }
 
 #inputBtn_house5{
-    display : none;
+    background-image: url('../image/house5.png');
+    background-color: transparent;
+    border: none;
+    width: 360px;
+    height: 320px;
 }
 #house5{
     margin-top: -450px;

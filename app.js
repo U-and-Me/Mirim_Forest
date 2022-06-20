@@ -233,7 +233,7 @@ app.get('/Game_town', function(req, res){
             if(nick_house[i].nickname.length == 0){
                 town_html += `houses[${i}].innerHTML += '<span  style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">주인없음</span>';`;
             }else{
-                town_html += `houses[${1}].innerHTML += '<span  style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${nick_house[i].nickname}</span>';`;
+                town_html += `houses[${i}].innerHTML += '<span  style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${nick_house[i].nickname}</span>';`;
             }
         }
         town_html += `
