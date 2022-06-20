@@ -7,9 +7,11 @@
         <link rel="stylesheet" type="text/css" href="user.css"/>
     </head>
     <body>
-        <button type="button" class="btm_image" id="img_btn" onclick="location.href='../index.html';">
-            <img  src="../image/Game_town_txtBtn.png">
-        </button>        
+        <!--<div id="gameStartBtn">
+            <a href="../Game_town/miniGame.html">
+                <img src="../image/mushroom.png" id="close">
+            </a>
+        </div>-->   
         <form method="post" action="/process/submitInfo">
             <div id="que">
                 <h3 id="queMade1">문제1</h3>
@@ -25,7 +27,10 @@
                 <h3 id="name">이름</h3>
                 <input type="text" id="txt_name" name="nickname">
             </div>
-            <button type="submit"> 제출 </button>
+            
+            <button type="submit"class="btm_image" id="img_btn" onclick="location.href='../index.html';">
+                <img  src="../image/Game_town_txtBtn.png">
+            </button>     
         </form>
     </body>
 </html>
