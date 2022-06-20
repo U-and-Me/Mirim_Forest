@@ -1,7 +1,7 @@
 // 비속어 리스트
 var word_list_1 = ['ㅅㅂ','ㅆㅂ','ㅂㅅ', 'ㄲㅈ', 'ㄱㅅㄲ', 'ㄱㅅㄱ', 'ㅆ', 'ㅈㄲ', 'ㅈㄱ','ㅈㄹ','ㄱㅈㄹ', 'ㅈㄴ', 'ㅁㅊ', 'ㅁㅊㄴ', 'ㄱㄹ', 'ㅅㅂㄹ', 'ㅅㅂㄴ','ㅗ'];
 var word_list_2 = ['시발', '씨발', '병신', '꺼져', '개새끼', '개새기', '썅', '좆까', '조까', '좆가', '지랄', '개지랄', '존나', '미친', '미친년', '미친놈', '구라', '바보', '멍청이', '시발련' ,'시발놈', '시발년', '시발눔', '시발뇬' ,'시발념', '씨발련' ,'씨발놈', '씨발년', '씨발눔', '씨발뇬' ,'씨발념'];
-var word_list_3 = ['tq', 'Tq', 'TQ', 'tQ', 'qt', 'QT', 'Rw', 'rtR', 'rtr', 'T', 'wR', 'wr', 'wf', 'rwf', 'ws', 'ac', 'acs', 'rf', 'tqf', 'tqs', 'h'];
+var word_list_3 = ['tq', 'Tq', 'TQ', 'tQ', 'qt', 'QT', 'Rw', 'rtR', 'rtr', 'T', 'wR', 'wr', 'wf', 'rwf', 'ws', 'ac', 'acs', 'rf', 'tqf', 'tqs'];
 var word_list_4 = ['fuck', 'fucking', 'tlqkf', 'qudtls', 'rjwu', 'tororl', 'tid', 'whrk', 'whwrk', 'wlfkf', 'rowlfkf', 'whssk', 'whffk', 'alcls', 'alclssus', 'sus', 'alclssha', 'rnfk', 'qkqh', 'ajdcjddl', 'tlqkffus', 'tlqkfsha', 'tlqkfsus', 'tlqkfsna', 'tlqkfsys', 'tlqkfsua'];
 
 // 모음, 자음 리스트
@@ -9,9 +9,6 @@ var word_list_ko_1 = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ
 var word_list_ko_2 = ['ㄳ', 'ㄵ','ㄶ','ㄺ','ㄻ','ㄼ','ㄽ','ㄾ','ㄿ','ㅀ','ㅄ'];
 var word_list_ko_3 = ['ㅏ','ㅑ','ㅓ','ㅕ','ㅗ','ㅛ','ㅜ','ㅠ','ㅡ','ㅣ'];
 var word_list_ko_4 = ['ㅘ', 'ㅚ','ㅙ','ㅝ','ㅟ','ㅞ','ㅢ'];
-
-// 영어 리스트
-var word_list_en_1 = ['A', 'B','C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 // 비속어 필터링
 function delContent(content){
@@ -146,17 +143,6 @@ function warningWord(content){
 
     if(count6 >= 1)
         return "겹모음 1개 초과";
-
-    var count7 = 0;
-    split.forEach(sp => {
-        word_list_en_1.forEach(element => {
-            if(sp.toUpperCase().includes(element)){
-                count7++;
-            }
-        });
-    });
-    if(count7 >= 6)
-        return "영어 5개 초과";
 
     return undefined;
 }
