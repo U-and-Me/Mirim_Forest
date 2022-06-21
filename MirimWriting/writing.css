@@ -2,7 +2,7 @@ body {
     margin: 0%;
 
     height: 100vh;
-    /*background-image: url('../image/guestbook_bg.png');*/
+    /*background-image: url('../image/MirimWriting_bg.jpg');*/
     background-color: #D3FFAC;
     background-repeat : no-repeat;
     background-size : cover;
@@ -43,7 +43,7 @@ body {
 }
 #chatView {
     width: 100vw;
-    height: 1100px;
+    height: 1000px;
     overflow-y: scroll;
 }
 #chatForm {
