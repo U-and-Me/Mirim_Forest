@@ -42,9 +42,13 @@ body {
     margin-top: 30px;
 }
 #chatView {
-    width: 100vw;
+    width: 1800;
     height: 1000px;
+
+    margin: 3%;
+
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 #chatForm {
     text-align: center;
