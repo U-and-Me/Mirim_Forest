@@ -155,9 +155,6 @@ app.get('/MirimTMI', function(req, res){
 
     // 콘솔로 보기
     conn.query(sql, function(err, results, field){
-        // console.log(results[i].title);
-        // console.log(results[i].content);
-        // console.log(results[i].nickname);
         tmi = results;
     });    
 
@@ -168,6 +165,17 @@ app.get('/MirimTMI', function(req, res){
             var title = tmi[i].title;
             var content = tmi[i].content;
             var nickname = tmi[i].nickname;
+
+            content = content.replace("\r", "");
+            if(content.includes('\n')){
+                var arr = content.split('\n');
+                console.log(arr);
+                content = arr[0];
+                for(let j = 1; j < arr.length; j++){
+                    content += "<br>" + arr[j];
+                    console.log("con : " + content);
+                }
+            }
 
             html_tmi += 
             `
@@ -186,8 +194,6 @@ app.get('/MirimTMI', function(req, res){
         `
             </script>
         `;
-
-        //console.log(html_tmi);
 
         res.send(html_tmi);
 
