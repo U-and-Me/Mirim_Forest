@@ -66,6 +66,11 @@ app.get('/AddUser', function(req, res){
     res.sendFile(__dirname + '/Game_town/user.html');
 });
 
+app.get('/Help', function(req, res){
+    res.sendFile(__dirname + '/Help/help.html');
+});
+
+
 var $;
 var html_write;
 var html_reset;
