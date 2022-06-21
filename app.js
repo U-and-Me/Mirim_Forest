@@ -104,7 +104,7 @@ app.get('/MirimWriting', function(req, res){
 
         while(i < write.length){
         html_write += `
-            chatView.innerHTML += '<div style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${write[i].user_write}</div>';    
+            chatView.innerHTML += '<span style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">🗣 ${write[i].user_write}</span>';    
             
             chatView.scrollBy(0, chatView.scrollHeight);
             
@@ -184,11 +184,10 @@ app.get('/MirimTMI', function(req, res){
             content = content.replace("\r", "");
             if(content.includes('\n')){
                 var arr = content.split('\n');
-                console.log(arr);
+            
                 content = arr[0];
                 for(let j = 1; j < arr.length; j++){
-                    content += "<br>" + arr[j];
-                    console.log("con : " + content);
+                    content += " " + arr[j];
                 }
             }
 
@@ -313,7 +312,7 @@ app.get('/MiniGame', function(req, res){
 
         // 문제 추가
         game_html += `
-            test.innerHTML += '<span style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${q1} VS ${q2}</span>';
+            test.innerHTML += '<span style="position:absolute; width:auto; height: 80px; margin-left:10%; margin-top:10%; font-size:60px; font-weight: 600; color:392f31; line-height: 78px; padding-left:10%; padding-right:10%; top:40px; border-radius:10px">${q1} VS ${q2}</span>';
         `;
         game_html += `
             </script>
