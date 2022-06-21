@@ -3,11 +3,10 @@ var http = require('http');
 var path = require('path');
 
 const mysql = require('mysql');
-var db_config = require('./.config.json');
+const db = require('./db.js');
 
 var static = require('serve-static');
 var bodyParser = require('body-parser');
-var jsdom = require("jsdom");
 var cheerio = require('cheerio');
 var request = require('request');
 
@@ -30,25 +29,6 @@ app.use('/AddUser', static(path.join(__dirname, '/Game_town')));
 
 // 필터링
 var filtering = require('./.filter');
-
-// mysql 접속 설정
-const conn = mysql.createConnection({
-    host : db_config.host,
-    port : '3306',
-    user : db_config.user,
-    password : db_config.password,
-    database : db_config.database
-});
-
-conn.connect((err) => {
-    if(err){
-        console.log(err);
-        conn.end();
-        throw err;
-    }else{
-        console.log("DB 접속 성공");
-    }
-});
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + 'index.html');
@@ -100,12 +80,11 @@ app.get('/MirimWriting', function(req, res){
     var write = {};
     var i = 0;
 
-    conn.query(sql, function(err, results, field){
+    db.query(sql, function(err, results, field){
         write = results;
     });
 
     setTimeout(function(){
-        //console.log(write);
 
         while(i < write.length){
         html_write += `
@@ -123,8 +102,6 @@ app.get('/MirimWriting', function(req, res){
             </script>
         `;
 
-        //console.log(html_write);
-
         res.send(html_write);
 
         html_write = html_reset;
@@ -137,7 +114,6 @@ var html_tmi_reset;
 
 app.get('/MirimTMI', function(req, res){
     console.log("오늘 나의 TMi");
-    //res.sendFile(__dirname + '/MirimTMI/tmi.html');
 
     request('http://localhost:3000/MirimTMI/tmi.html', function(error, response, html){
             if(error) {throw error};
@@ -159,32 +135,17 @@ app.get('/MirimTMI', function(req, res){
     var i = 0;
 
     // 콘솔로 보기
-    conn.query(sql, function(err, results, field){
+    db.query(sql, function(err, results, field){
         tmi = results;
     });    
-
     
     setTimeout(function(){
-        //console.log(write);
-        
 
         while(i < tmi.length){
             var title = tmi[i].title;
             var content = tmi[i].content;
             var nickname = tmi[i].nickname;
             var pd = 50;
-
-            /*html_tmi += 
-            `
-                tmiView.innerHTML += '<div id="tmitest" style="margin-left:5%; width:1000px; height: auto; background-color:#2A671C" > </div>';
-
-                var tmitest = document.getElementById('tmitest');
-                
-                tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 800; color: black; line-height: 78px; padding-left:1%; padding-right:1%; padding-top:10px; padding-bottom:30px; background-color:#fffcab; border-radius:10px">${title}<br></span>';    
-                tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: black; line-height: 78px; padding-left:1%; padding-right:2%; padding-top:30px; padding-bottom:30px; background-color:#fffcab; border-radius:10px">${content}<br></span>';    
-                tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-left:5%; margin-top:1%; font-size:20px; font-weight: 700; color: black; line-height: 78px; padding-left:1%; padding-right:1%; padding-top:30px; padding-bottom:15px;background-color:#fffcab; border-radius:10px">${"TMI 작성자 : " + nickname}<br></span>'; 
-                tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-left:5%; margin-top:1%; font-size:20px; font-weight: 800; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${"     "}<br></span>';
-            `;*/
 
             content = content.replace("\r", "");
             if(content.includes('\n')){
@@ -249,7 +210,7 @@ app.get('/Game_town', function(req, res){
 
     var sql = 'SELECT nickname, house FROM townGame';
 
-    conn.query(sql, function(err, results, field){
+    db.query(sql, function(err, results, field){
         console.log(results);
         nick_house = results;
     });    
@@ -276,7 +237,6 @@ var select_house;
 app.get('/MiniGame', function(req, res){
     
     select_house = user_click_house;
-    console.log("dddd : " + select_house + "  " + user_click_house);
 
     // 페이지 읽어서 문제 보여주기
     request('http://localhost:3000/Game_town/miniGame.html', function(error, response, html){
@@ -295,7 +255,6 @@ app.get('/MiniGame', function(req, res){
 
     // 선택한 집 정보 가져오기
     var num = select_house.substring(5);
-    console.log("num " + num);
 
     // 주인이 있는 집인지 아닌지 확인
     if(nick_house[num-1].nickname.length != 0){
@@ -305,7 +264,7 @@ app.get('/MiniGame', function(req, res){
         sql = 'SELECT * FROM example_game order by rand() limit 1';
     }
 
-    conn.query(sql, function(err, results, field){
+    db.query(sql, function(err, results, field){
         console.log(results);
         q1 = results[0].question_1;
         q2 = results[0].question_2;
@@ -370,7 +329,7 @@ router.route('/process/send').post(function(req, res){
             console.log(filtering_str)
             // DB에 글 저장
             var sql = 'INSERT INTO WRITING VALUES("' + filtering_str + '")';
-            conn.query(sql, function(err, results){
+            db.query(sql, function(err, results){
                 if(err) throw err;
             });
 
@@ -438,7 +397,7 @@ router.route('/process/tmisend').post(function(req, res){
 
             // DB에 내용 저장
             var sql = 'INSERT INTO TMI VALUES("' + filtering_title + '", "' + filtering_content + '", "' + filtering_nickname + '")';
-            conn.query(sql, function(err, results){
+            db.query(sql, function(err, results){
                 if(err) throw err;
             });
 
@@ -509,7 +468,7 @@ router.route('/process/submitInfo').post(function(req, res){
         if(chk_userid == true && chk_nickname == true && chk_q1 == true && chk_q2 == true){
             var sql = 'UPDATE townGame SET user_id=?, nickname=?, question_1=?, question_2=? where house=?';
             var params = [user_id, nickname, q1, q2, house];
-            conn.query(sql, params, function(err, results){
+            db.query(sql, params, function(err, results){
                 if(err) console.log(err);
             })
 
@@ -556,5 +515,4 @@ router.route('/process/house5').post(function(req, res){
 app.use('/', router);
 
 http.createServer(app).listen(3000, function(){
-   // console.log(__dirname);
 });
