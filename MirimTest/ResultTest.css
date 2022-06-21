@@ -23,20 +23,13 @@ body {
 #post{
     float: right;
 
-    margin-top: -1040px;
+    margin-top: -1030px;
     margin-right: 7px;
 }
 
-#homebtn{
+#btnGameTown{
     float: right;
 
-    margin-top: -500px;
-    margin-right: 145px;
-}
-
-#msgbtn{
-    float: right;
-
-    margin-top: -280px;
-    margin-right: 60px;
+    margin-top: -590px;
+    margin-right: 20px;
 }
