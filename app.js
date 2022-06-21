@@ -104,7 +104,7 @@ app.get('/MirimWriting', function(req, res){
 
         while(i < write.length){
         html_write += `
-            chatView.innerHTML += '<div style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">${write[i].user_write}</div>';    
+            chatView.innerHTML += '<span style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">🗣 ${write[i].user_write}</span>';    
             
             chatView.scrollBy(0, chatView.scrollHeight);
             
