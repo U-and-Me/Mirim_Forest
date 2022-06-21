@@ -9,26 +9,28 @@ body {
 
 }
 
-#TMI{
+
+
+#Test{
     position: absolute;
-    margin-top: 400px;
-    margin-left: 1900px;
+    margin-top: 12%;
+    margin-left: 200px;
 }
 
 #Write{
     position: absolute;
-    margin-top: 80px;
-    margin-left: 1000px;
-}
-
-#Test{
-    position: absolute;
-    margin-top: 420px;
-    margin-left: 200px;
+    margin-top: 2%;
+    margin-left: 30%;
 }
 
 #Town{
     position: absolute;
-    margin-top: 780px;
-    margin-left: 1000px;
+    margin-top: 18%;
+    margin-left: 48%;
+}
+
+#TMI{
+    position: absolute;
+    margin-top: 5%;
+    margin-left: 70%;
 }
