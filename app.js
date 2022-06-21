@@ -9,6 +9,7 @@ var static = require('serve-static');
 var bodyParser = require('body-parser');
 var cheerio = require('cheerio');
 var request = require('request');
+var fs = require('fs');
 
 var app = express();
 var router = express.Router();
@@ -57,24 +58,17 @@ var html_reset;
 
 app.get('/MirimWriting', function(req, res){
     console.log("이어서 글짓기");
-    //res.sendFile(__dirname + '/MirimWriting/writing.html');
 
-    request('http://localhost:3000/MirimWriting/writing.html', function(error, response, html){
-            if(error) {throw error};
+    fs.readFile('./MirimWriting/writing.html', 'utf-8', (err, data) => {
+        html_write = data;
+        html_reset = html_write;
 
-            $ = cheerio.load(html);
-            
-            //console.log($.html());
-
-            html_write = $.html();
-            html_write += `
+        html_write += `
             <script>
                 var chatView = document.querySelector("#chatView");
-            `;
-
-            html_reset = html_write;
+        `;
     })
-    
+
     // DB 글 가져오기
     var sql = 'SELECT * FROM WRITING';
     var write = {};
@@ -115,18 +109,14 @@ var html_tmi_reset;
 app.get('/MirimTMI', function(req, res){
     console.log("오늘 나의 TMi");
 
-    request('http://localhost:3000/MirimTMI/tmi.html', function(error, response, html){
-            if(error) {throw error};
+    fs.readFile('./MirimTMI/tmi.html', 'utf-8', (err, data) => {
+        html_tmi = data;
+        html_tmi_reset = html_tmi;
 
-            $2 = cheerio.load(html);
-
-            html_tmi =$2.html();
-            html_tmi += `
+        html_tmi += `
             <script>
-                var tmiView = document.querySelector("#tmiView");
-            `;
-
-            html_tmi_reset = html_tmi;
+            var tmiView = document.querySelector("#tmiView");
+        `;
     })
 
     // DB 글 가져오기
@@ -150,9 +140,11 @@ app.get('/MirimTMI', function(req, res){
             content = content.replace("\r", "");
             if(content.includes('\n')){
                 var arr = content.split('\n');
-            
+                console.log(arr);
                 content = arr[0];
                 for(let j = 1; j < arr.length; j++){
+                    arr[j] = arr[j].replace("\r", "");
+                    console.log(content);
                     content += " " + arr[j];
                 }
             }
@@ -192,12 +184,9 @@ var nick_house;
 app.get('/Game_town', function(req, res){
 
     // 집주인 있을 경우 닉네임 보여주기
-    request('http://localhost:3000/Game_town/town.html', function(error, response, html){
-        if(error) {throw error};
+    fs.readFile('./Game_town/town.html', 'utf-8', (err, data) => {
+        town_html = data;
 
-        $ = cheerio.load(html);
-
-        town_html = $.html();
         town_html += `
         <script>
             var houses = [];
@@ -206,7 +195,7 @@ app.get('/Game_town', function(req, res){
                 houses[i-1] = document.getElementById(house);
             }
         `;
-    });   
+    })
 
     var sql = 'SELECT nickname, house FROM townGame';
 
@@ -234,22 +223,20 @@ app.get('/Game_town', function(req, res){
 
 var q1, q2, q_ans;
 var select_house; 
+var game_html;
 app.get('/MiniGame', function(req, res){
     
     select_house = user_click_house;
 
     // 페이지 읽어서 문제 보여주기
-    request('http://localhost:3000/Game_town/miniGame.html', function(error, response, html){
-        if(error) {throw error};
+    fs.readFile('./Game_town/miniGame.html', 'utf-8', (err, data) => {
+        game_html = data;
 
-        $ = cheerio.load(html);
-
-        game_html = $.html();
         game_html += `
-        <script>
-            var test = document.getElementById('test_bg');
+            <script>
+                var test = document.getElementById('test_bg');
         `;
-    });
+    })
 
     var sql;
 
