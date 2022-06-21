@@ -184,11 +184,10 @@ app.get('/MirimTMI', function(req, res){
             content = content.replace("\r", "");
             if(content.includes('\n')){
                 var arr = content.split('\n');
-                console.log(arr);
+            
                 content = arr[0];
                 for(let j = 1; j < arr.length; j++){
-                    content += "<br>" + arr[j];
-                    console.log("con : " + content);
+                    content += " " + arr[j];
                 }
             }
 
