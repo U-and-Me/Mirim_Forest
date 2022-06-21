@@ -26,6 +26,8 @@ body {
 
     margin-left: 1110px;
     margin-top: 400px;
+
+    cursor: pointer;
 }
 
 #link{
