@@ -1,16 +1,17 @@
-var express = require('express');
+const express	= require('express');
+const mysql     = require('mysql');
+const db 	= require('./db.js');
+const app 	= express();
+// configuration =========================
+
 var http = require('http');
 var path = require('path');
-
-const mysql = require('mysql');
-const db = require('./db.js');
-
 var static = require('serve-static');
 var bodyParser = require('body-parser');
 var cheerio = require('cheerio');
 var request = require('request');
+var fs = require('fs');
 
-var app = express();
 var router = express.Router();
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -50,138 +51,114 @@ app.get('/Help', function(req, res){
     res.sendFile(__dirname + '/Help/help.html');
 });
 
-
-var $;
 var html_write;
-var html_reset;
 
 app.get('/MirimWriting', function(req, res){
     console.log("이어서 글짓기");
-    //res.sendFile(__dirname + '/MirimWriting/writing.html');
 
-    request('http://localhost:3000/MirimWriting/writing.html', function(error, response, html){
-            if(error) {throw error};
+    html_write = null;
 
-            $ = cheerio.load(html);
-            
-            //console.log($.html());
+    fs.readFile('./MirimWriting/writing.html', 'utf-8', (err, data) => {
+        html_write = data;
 
-            html_write = $.html();
-            html_write += `
+        html_write += `
             <script>
                 var chatView = document.querySelector("#chatView");
-            `;
+        `;
 
-            html_reset = html_write;
-    })
+        // DB 글 가져오기
+        var sql = 'SELECT * FROM writing';
+        var write = {};
+        var i = 0;
+
+        db.query(sql, function(err, results, field){
+            write = results;
+
+            while(i < write.length){
+                html_write += `
+                chatView.innerHTML += '<span style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">🗣 ${write[i].user_write}</span>';    
+                
+                chatView.scrollBy(0, chatView.scrollHeight);
+                
+                var message = document.getElementById('msg').value; 
+                msg.value='';
+                `;
     
-    // DB 글 가져오기
-    var sql = 'SELECT * FROM WRITING';
-    var write = {};
-    var i = 0;
+                i++;
+            }
+            html_write += `
+                </script>
+            `;
+                    res.send(html_write);
+        });
+    
 
-    db.query(sql, function(err, results, field){
-        write = results;
-    });
-
-    setTimeout(function(){
-
-        while(i < write.length){
-        html_write += `
-            chatView.innerHTML += '<span style=" width:auto; height: 80px; margin-left:2%; margin-top:1%; font-size:30px; font-weight: 600; line-height: 78px; padding-left:1%; padding-right:1%; background-color:white; border-radius:10px">🗣 ${write[i].user_write}</span>';    
-            
-            chatView.scrollBy(0, chatView.scrollHeight);
-            
-            var message = document.getElementById('msg').value; 
-            msg.value='';
-        `;
-
-        i++;
-        }
-        html_write += `
-            </script>
-        `;
-
-        res.send(html_write);
-
-        html_write = html_reset;
-    }, 500);
+    })
 });
 
-var $2;
 var html_tmi;
-var html_tmi_reset;
 
 app.get('/MirimTMI', function(req, res){
     console.log("오늘 나의 TMi");
 
-    request('http://localhost:3000/MirimTMI/tmi.html', function(error, response, html){
-            if(error) {throw error};
+    html_tmi = null;
 
-            $2 = cheerio.load(html);
+    fs.readFile('./MirimTMI/tmi.html', 'utf-8', (err, data) => {
+        html_tmi = data;
 
-            html_tmi =$2.html();
-            html_tmi += `
+        html_tmi += `
             <script>
-                var tmiView = document.querySelector("#tmiView");
-            `;
+            var tmiView = document.querySelector("#tmiView");
+        `;
 
-            html_tmi_reset = html_tmi;
-    })
+        
+        // DB 글 가져오기
+        var sql = 'SELECT * FROM tmi';
+        var tmi = {};
+        var i = 0;
 
-    // DB 글 가져오기
-    var sql = 'SELECT * FROM tmi';
-    var tmi = {};
-    var i = 0;
+        // 콘솔로 보기
+        db.query(sql, function(err, results, field){
+            tmi = results;
 
-    // 콘솔로 보기
-    db.query(sql, function(err, results, field){
-        tmi = results;
-    });    
-    
-    setTimeout(function(){
+            while(i < tmi.length){
+                var title = tmi[i].title;
+                var content = tmi[i].content;
+                var nickname = tmi[i].nickname;
 
-        while(i < tmi.length){
-            var title = tmi[i].title;
-            var content = tmi[i].content;
-            var nickname = tmi[i].nickname;
-            var pd = 50;
-
-            content = content.replace("\r", "");
-            if(content.includes('\n')){
-                var arr = content.split('\n');
-            
-                content = arr[0];
-                for(let j = 1; j < arr.length; j++){
-                    content += " " + arr[j];
+                content = content.replace("\r", "");
+                if(content.includes('\n')){
+                    var arr = content.split('\n');
+                    content = arr[0];
+                    for(let j = 1; j < arr.length; j++){
+                        arr[j] = arr[j].replace("\r", "");
+                        content += " " + arr[j];
+                    }
                 }
+
+                html_tmi += 
+                `
+                    tmiView.innerHTML += '<div id="tmitest" style="margin-left:5%; width:auto; height: auto; background-color:#2A671C" > </div>';
+
+                    var tmitest = document.getElementById('tmitest');
+                
+                    tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-top:5%; margin-left:5%; font-size:30px; font-weight: 800; color: black; line-height: 78px; padding-left:3%; padding-top:16px; padding-bottom:28px; padding-right:3%; background-color:#fffcab; border-radius:10px 0px 0px 10px">${title}</span>';    
+                    tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-top:5%; font-size:30px; font-weight: 600; color: black; line-height: 78px; padding-left:4%; padding-right:4%; padding-top:16px; padding-bottom:28px; background-color:#fffcab; ">${content}</span>';    
+                    tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-top:5%; font-size:20px; font-weight: 700; color: black; line-height: 78px; padding-left:3%; padding-right:3%; padding-top:27px; padding-bottom:30px; background-color:#fffcab; border-radius: 0px 10px 10px 0px">${"TMI 작성자 : " + nickname}<br></span>'; 
+                    tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-left:5%; margin-top:1%; font-size:20px; font-weight: 800; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${"     "}<br></span>';
+                `;
+                i++;
             }
 
             html_tmi += 
             `
-                tmiView.innerHTML += '<div id="tmitest" style="margin-left:5%; width:auto; height: auto; background-color:#2A671C" > </div>';
-
-                var tmitest = document.getElementById('tmitest');
-                
-                tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-top:5%; margin-left:5%; font-size:30px; font-weight: 800; color: black; line-height: 78px; padding-left:3%; padding-top:16px; padding-bottom:28px; padding-right:3%; background-color:#fffcab; border-radius:10px 0px 0px 10px">${title}</span>';    
-                tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-top:5%; font-size:30px; font-weight: 600; color: black; line-height: 78px; padding-left:4%; padding-right:4%; padding-top:16px; padding-bottom:28px; background-color:#fffcab; ">${content}</span>';    
-                tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-top:5%; font-size:20px; font-weight: 700; color: black; line-height: 78px; padding-left:3%; padding-right:3%; padding-top:27px; padding-bottom:30px; background-color:#fffcab; border-radius: 0px 10px 10px 0px">${"TMI 작성자 : " + nickname}<br></span>'; 
-                tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-left:5%; margin-top:1%; font-size:20px; font-weight: 800; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${"     "}<br></span>';
-            `;
-            i++;
-        }
-
-        html_tmi += 
-        `
             
-            </script>
-        `;
+                </script>
+            `;
+	        res.send(html_tmi);
+        });   
 
-        res.send(html_tmi);
-
-        html_tmi = html_tmi_reset;
-    }, 500);
-    
+    })    
 });
 
 
@@ -191,13 +168,12 @@ var town_html;
 var nick_house;
 app.get('/Game_town', function(req, res){
 
+    town_html = null;
+
     // 집주인 있을 경우 닉네임 보여주기
-    request('http://localhost:3000/Game_town/town.html', function(error, response, html){
-        if(error) {throw error};
+    fs.readFile('./Game_town/town.html', 'utf-8', (err, data) => {
+        town_html = data;
 
-        $ = cheerio.load(html);
-
-        town_html = $.html();
         town_html += `
         <script>
             var houses = [];
@@ -206,86 +182,74 @@ app.get('/Game_town', function(req, res){
                 houses[i-1] = document.getElementById(house);
             }
         `;
-    });   
 
-    var sql = 'SELECT nickname, house FROM townGame';
+        
+        var sql = 'SELECT nickname, house FROM towngame';
 
-    db.query(sql, function(err, results, field){
-        console.log(results);
-        nick_house = results;
-    });    
+        db.query(sql, function(err, results, field){
+            nick_house = results;
 
-    // 현재 집을 갖고 있는 사람의 닉네임 보여주기
-    setTimeout(function(){
-        for(let i = 0; i < 5; i++){
-            if(nick_house[i].nickname.length == 0){
-                town_html += `houses[${i}].innerHTML += '<span  style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">주인없음</span>';`;
-            }else{
-                town_html += `houses[${i}].innerHTML += '<span  style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${nick_house[i].nickname}</span>';`;
+            for(let i = 0; i < nick_house.length; i++){
+                if(nick_house[i].nickname.length == 0){
+                    town_html += `houses[${i}].innerHTML += '<span  style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">주인없음</span>';`;
+                }else{
+                    town_html += `houses[${i}].innerHTML += '<span  style="width:auto; height: 80px; margin-left:5%; margin-top:1%; font-size:30px; font-weight: 600; color: white; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${nick_house[i].nickname}</span>';`;
+                }
             }
-        }
-        town_html += `
-            </script>
-        `;
-
-        res.send(town_html);
-    }, 500);
+            town_html += `
+                </script>
+            `;
+		res.send(town_html);
+        });  
+    }) 
 });
 
 var q1, q2, q_ans;
 var select_house; 
+var game_html;
 app.get('/MiniGame', function(req, res){
     
     select_house = user_click_house;
+    game_html = null;
 
     // 페이지 읽어서 문제 보여주기
-    request('http://localhost:3000/Game_town/miniGame.html', function(error, response, html){
-        if(error) {throw error};
+    fs.readFile('./Game_town/miniGame.html', 'utf-8', (err, data) => {
+        game_html = data;
 
-        $ = cheerio.load(html);
-
-        game_html = $.html();
         game_html += `
-        <script>
-            var test = document.getElementById('test_bg');
+            <script>
+                var test = document.getElementById('test_bg');
         `;
-    });
 
-    var sql;
+        var sql;
 
-    // 선택한 집 정보 가져오기
-    var num = select_house.substring(5);
+	// 주인이 있는 집인지 아닌지 확인
+	var num = select_house.substring(5);
+        if(nick_house[num-1].nickname.length != 0){
+            sql = 'SELECT question_1, question_2 FROM towngame where house="' + select_house + '"';
+        }else{
+            sql = 'SELECT * FROM example_game order by rand() limit 1';
+        }
 
-    // 주인이 있는 집인지 아닌지 확인
-    if(nick_house[num-1].nickname.length != 0){
-        console.log('ddd');
-        sql = 'SELECT question_1, question_2 FROM townGame where house="' + select_house + '"';
-    }else{
-        sql = 'SELECT * FROM example_game order by rand() limit 1';
-    }
+        db.query(sql, function(err, results, field){
+            q1 = results[0].question_1;
+            q2 = results[0].question_2;
+            q_ans = Math.floor((Math.random() * 2) + 1);
 
-    db.query(sql, function(err, results, field){
-        console.log(results);
-        q1 = results[0].question_1;
-        q2 = results[0].question_2;
-        q_ans = Math.floor((Math.random() * 2) + 1);
-        console.log(q_ans);
-    });    
+            // 문제 추가
+            game_html += `
+                test.innerHTML += '<span style="position:absolute; width:auto; height: 80px; margin-left:10%; margin-top:10%; font-size:60px; font-weight: 600; color:392f31; line-height: 78px; padding-left:10%; padding-right:10%; top:40px; border-radius:10px">${q1} VS ${q2}</span>';
+            `;
+
+            game_html += `
+                </script>
+            `;
     
-    setTimeout(function(){
-
-        // 문제 추가
-        game_html += `
-            test.innerHTML += '<span style="position:absolute; width:auto; height: 80px; margin-left:10%; margin-top:10%; font-size:60px; font-weight: 600; color:392f31; line-height: 78px; padding-left:10%; padding-right:10%; top:40px; border-radius:10px">${q1} VS ${q2}</span>';
-        `;
-        game_html += `
-            </script>
-        `;
-
-        res.send(game_html);
-    }, 500);
-
+            res.send(game_html);
+        });
+    });
 });
+
 
 // 글쓰기 라우팅 함수
 router.route('/process/send').post(function(req, res){
@@ -328,7 +292,7 @@ router.route('/process/send').post(function(req, res){
         if(check){
             console.log(filtering_str)
             // DB에 글 저장
-            var sql = 'INSERT INTO WRITING VALUES("' + filtering_str + '")';
+            var sql = 'INSERT INTO writing VALUES("' + filtering_str + '")';
             db.query(sql, function(err, results){
                 if(err) throw err;
             });
@@ -396,7 +360,7 @@ router.route('/process/tmisend').post(function(req, res){
             var filtering_nickname = filtering.filter_func.delContent(paramNickname);
 
             // DB에 내용 저장
-            var sql = 'INSERT INTO TMI VALUES("' + filtering_title + '", "' + filtering_content + '", "' + filtering_nickname + '")';
+            var sql = 'INSERT INTO tmi VALUES("' + filtering_title + '", "' + filtering_content + '", "' + filtering_nickname + '")';
             db.query(sql, function(err, results){
                 if(err) throw err;
             });
@@ -466,13 +430,13 @@ router.route('/process/submitInfo').post(function(req, res){
         chk_q2 = filtering.filter_func.checkBlank(q2);
 
         if(chk_userid == true && chk_nickname == true && chk_q1 == true && chk_q2 == true){
-            var sql = 'UPDATE townGame SET user_id=?, nickname=?, question_1=?, question_2=? where house=?';
+            var sql = 'UPDATE towngame SET user_id=?, nickname=?, question_1=?, question_2=? where house=?';
             var params = [user_id, nickname, q1, q2, house];
             db.query(sql, params, function(err, results){
                 if(err) console.log(err);
             })
 
-            res.send("<script>window.close();</script>"); 
+            res.send("<script>window.close(); location.href='/Game_town'; </script>"); 
         }else{
             res.send("<script>alert('내용을 작성해주세요'); history.back();</script>");        
         }
@@ -514,5 +478,7 @@ router.route('/process/house5').post(function(req, res){
 
 app.use('/', router);
 
-http.createServer(app).listen(3000, function(){
+app.listen(app.get('port'), () => {
+  console.log('Express server listening on port ' + app.get('port'));
 });
+
