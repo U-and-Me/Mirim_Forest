@@ -6,6 +6,26 @@ body{
     overflow: hidden;
 }
 
+#close{
+    float: right;
+    margin-right: 70px;
+    margin-top: -490px;
+
+    width: 50px;
+    height: 100px;
+}
+
+#close:hover{
+    background-image: url('../image/close_hover.png');
+
+    float: right;
+    margin-right: 70px;
+    margin-top: -500px;
+
+    width: 50px;
+    height: 100px;
+}
+
 /*
 #house{
     margin-top: 300px;

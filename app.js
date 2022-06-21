@@ -472,9 +472,8 @@ router.route('/process/submitAnswer').post(function(req, res){
     }else{
         // 맞았을 경우
         if(user_answer == rand_answer){
-            //res.send("<script>alert('정답!! 지금 집을 등록하러 갈까요?'); history.back(); </script>");
+            res.send("<script>alert('정답!! 지금 집을 등록하러 갈까요?'); location.href='/AddUser'; </script>");
         
-            res.redirect('/AddUser');
         }else{
             res.send("<script>alert('틀렸습니다!! 타운으로 이동합니다'); window.close();</script>"); 
         }
