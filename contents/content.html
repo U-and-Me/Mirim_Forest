@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="./content.css"/>
     </head>
     <body>
+        
         <div id="TMI" onclick="movePage_t()">
             <img src="../image/tmi.png">
         </div>
@@ -17,6 +18,9 @@
         </div>
         <div id="Town" onclick="movePage_g()">
             <img src="../image/gametown.png">
+        </div>
+        <div id="icon" onClick="movePage_help()">
+            <img src="../image/icon.png";>
         </div>
     </body>
     <script>
@@ -31,6 +35,9 @@
         }
         function movePage_g(){
             location.href = "../Game_town";
+        }
+        function movePage_help() {
+            location.href = "../Help";
         }
     </script>
 </html>
