@@ -9,6 +9,8 @@ body {
 
 }
 
+
+
 #Test{
     position: absolute;
     margin-top: 12%;
@@ -33,21 +35,13 @@ body {
     margin-left: 70%;
 }
 
-/*
-#icon{
-    margin-top: 20%;
-}
-*/
-#back{
-    position: absolute;
-    font-size: 230%;
+/*반응형*/
+.my-div{    
     font-family: 'Happiness-Sans-Title';
+    font-size: 2vmin;
+    height : 200px;
+    text-align : center;
     color: white;
-
-    margin-left: 1200px;
-    margin-top: 1200px;
-
-    cursor: pointer;
 }
 
 @font-face {
