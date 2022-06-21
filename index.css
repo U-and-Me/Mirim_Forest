@@ -9,6 +9,17 @@ body {
     overflow-y: hidden;
     overflow-x: hidden;
 
+    
+}
+
+/*글씨*/
+.my-div{    
+    font-family: 'Happiness-Sans-Title';
+    font-size: 2vmin;
+    height : 200px;
+    text-align : center;
+    color: white;
+    margin-top: 15%;
 }
 
 #back_logo{
@@ -18,19 +29,18 @@ body {
     margin-left: 29%;
 }
 
+/*
 #start{
-    
     font-size: 230%;
-    font-family: 'Happiness-Sans-Title';
     color: white;
-
     margin-left: 1110px;
     margin-top: 400px;
-}
+}*/
 
 #link{
     text-decoration: none;
 }
+
 
 @font-face {
     font-family: 'Happiness-Sans-Title';
