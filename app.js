@@ -228,7 +228,7 @@ app.get('/MirimTMI', function(req, res){
                 
                     tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-top:5%; margin-left:5%; font-size:30px; font-weight: 800; color: black; line-height: 78px; padding-left:3%; padding-top:16px; padding-bottom:28px; padding-right:3%; background-color:#fffcab; border-radius:10px 0px 0px 10px">${title}</span>';    
                     tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-top:5%; font-size:30px; font-weight: 600; color: black; line-height: 78px; padding-left:4%; padding-right:4%; padding-top:16px; padding-bottom:28px; background-color:#fffcab; ">${content}</span>';    
-                    tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-top:5%; font-size:20px; font-weight: 700; color: black; line-height: 78px; padding-left:3%; padding-right:3%; padding-top:27px; padding-bottom:30px; background-color:#fffcab; border-radius: 0px 10px 10px 0px">${"TMI 작성자 : " + nickname}<br></span>'; 
+                    tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-top:5%; font-size:30px; font-weight: 800; color: black; line-height: 78px; padding-left:3%; padding-right:3%; padding-top:16px; padding-bottom:28px; background-color:#fffcab; border-radius: 0px 10px 10px 0px">${"TMI 작성자 : " + nickname}<br></span>'; 
                     tmitest.innerHTML += '<span style="width:700px; height: 80px; margin-left:5%; margin-top:1%; font-size:20px; font-weight: 800; line-height: 78px; padding-left:1%; padding-right:1%; background-color:#2A671C; border-radius:10px">${"     "}<br></span>';
                 `;
                 i++;

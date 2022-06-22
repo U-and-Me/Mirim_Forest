@@ -4,13 +4,11 @@ body{
     background-size : cover;
 }
 
-
-
 #txtMap{
     display: block;
     margin: 0px auto;
     height: 20%;
-    margin-top: 2%;
+    margin-top: 7%;
 }
 
 #btnBack{

@@ -76,8 +76,8 @@ body{
 
 
 /*user 정보*/
-#user{
-    margin-top: -330px;
+#user_num{
+    margin-top: -400px;
     margin-left: 930px;
 }
 #create_num{
@@ -95,6 +95,12 @@ body{
     color: black;
     padding: 4px; /*안쪽 여백*/
     box-sizing: border-box;
+}
+
+
+#user_nick{
+    margin-top: 100px;
+    margin-left: 530px;
 }
 #name{
     color: #0CC6B8;

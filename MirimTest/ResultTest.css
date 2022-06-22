@@ -5,7 +5,6 @@ body {
 
 #result_bg{
     background-image: url("../image/ResultTest_bg.png");
-
     width: 1399px;
     height: 100vh;
 }
@@ -13,7 +12,7 @@ body {
 #txt1{
     float: right;
 
-    margin-top: -1100px;
+    margin-top: -1190px;
     margin-right: 170px;
     
     font-weight: bold;
@@ -23,7 +22,7 @@ body {
 #post{
     float: right;
 
-    margin-top: -1030px;
+    margin-top: -1100px;
     margin-right: 7px;
 }
 
