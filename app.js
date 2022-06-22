@@ -94,7 +94,7 @@ app.get('/ResultTest', function(req, res){
             img.style.width = '370px';
             img.style.marginTop = '400px';
             img.style.marginLeft = '450px';
-            img.alt = mirim_percent + image_alt;
+            img.alt = parseInt(mirim_percent) + image_alt;
             console.log(img.src);
             result_bg.appendChild(img);
 
