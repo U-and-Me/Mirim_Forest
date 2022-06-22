@@ -27,6 +27,8 @@ body {
 
     margin-top: -240px;
     margin-right: 50px;
+
+    cursor:pointer;
 }
 
 #test_bg{
@@ -59,6 +61,8 @@ body {
 
     margin-top: 500px;
     margin-left: 160px;
+
+    cursor:pointer;
 }
 
 #ans_right{
@@ -71,4 +75,6 @@ body {
     border: none;
 
     margin-left: 270px;
+
+    cursor:pointer;
 }

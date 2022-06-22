@@ -9,30 +9,48 @@ body {
 
 }
 
+#back{
+    
+    margin-top: -120px;
+    margin-left: 2350px;
 
+    font-size:35px;
+
+    cursor:pointer;
+}
+
+#icon{
+    cursor:pointer;
+}
 
 #Test{
     position: absolute;
     margin-top: 12%;
     margin-left: 200px;
+
+    cursor:pointer;
 }
 
 #Write{
     position: absolute;
     margin-top: 2%;
     margin-left: 30%;
+
+    cursor:pointer;
 }
 
 #Town{
     position: absolute;
     margin-top: 18%;
     margin-left: 48%;
+    cursor:pointer;
 }
 
 #TMI{
     position: absolute;
     margin-top: 5%;
     margin-left: 70%;
+    cursor:pointer;
 }
 
 /*반응형*/
@@ -42,7 +60,6 @@ body {
     height : 200px;
     text-align : center;
     color: white;
-    margin-top: 40%;
 }
 
 @font-face {

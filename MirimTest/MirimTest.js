@@ -113,12 +113,15 @@ function Test(){
             CurPosition();
        ShowQuestion();
     }else{ // 테스트가 끝났을 경우 결과 화면으로 이동
-        mirim_percent = mirim_percent/20*100;
+        mirim_percent = (mirim_percent/20) * 100;
+        console.log(mirim_percent);
         localStorage.setItem("mirim_percent", mirim_percent);
+        location.href = '/ResultTest';
+        /*
         var link = 'ResultTest.html';
         location.href = link;
         location.replace(link);
-        window.open(link);
+        window.open(link);*/
     }
 }
 

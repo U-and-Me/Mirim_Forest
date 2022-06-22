@@ -29,13 +29,14 @@ body {
     margin-left: 29%;
 }
 
-/*
 #start{
     font-size: 230%;
     color: white;
     margin-left: 1110px;
     margin-top: 400px;
-}*/
+
+    cursor: pointer;
+}
 
 #link{
     text-decoration: none;
