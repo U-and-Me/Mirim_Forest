@@ -19,6 +19,7 @@ body {
     background-color: #179063;
     height: 100px;
     width: 100vw;
+    cursor:pointer;
 }
 
 /* 갈색 박스 */
@@ -147,12 +148,16 @@ input[id="chk_name"]:checked + label::after{
 
     height: 57px;
     width: 99px;
+
+    cursor:pointer;
 }
 
 #no_btn{
     margin-top: 15px;
     float: right;
     margin-right: 20px;
+
+    cursor:pointer;
 }
 
 #close{

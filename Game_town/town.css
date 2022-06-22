@@ -44,6 +44,8 @@ body{
     border: none;
     width: 360px;
     height: 320px;
+
+    cursor:pointer;
 }
 #house1{    
     margin-top: 20%;
@@ -56,6 +58,9 @@ body{
     border: none;
     width: 305px;
     height: 270px;
+  
+
+    cursor:pointer;
 }
 #house2{
     margin-top: -15%;
@@ -68,6 +73,8 @@ body{
     border: none;
     width: 305px;
     height: 280px;
+
+    cursor:pointer;
 }
 #house3{
     margin-top: -15%;
@@ -80,6 +87,8 @@ body{
     border: none;
     width: 360px;
     height: 320px;
+
+    cursor:pointer;
 }
 #house4{
     margin-top: -6%;
@@ -92,6 +101,8 @@ body{
     border: none;
     width: 360px;
     height: 320px;
+
+    cursor:pointer;
 }
 #house5{
     margin-top: -450px;
