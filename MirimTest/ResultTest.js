@@ -10,6 +10,9 @@ ShowImage();
 
 function ShowImage(){
     var result_bg = document.querySelector("#result_bg");
+    /*var result_bg = document.querySelector(image + 'ResultTest_bg.png');*/
+    
+
     if(mirim_percent < 0)
         mirim_percent = 0;
 
